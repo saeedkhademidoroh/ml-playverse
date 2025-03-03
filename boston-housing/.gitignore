@@ -1,2 +1,6 @@
 # Ignore the sample codes
 sample.ipynb
+
+# ignore the experiment results excel file
+~$experiment_results.xlsx
+experiment_results.xlsx
