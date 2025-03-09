@@ -1,30 +1,39 @@
-# Import necessary libraries
-import os
-import datetime
-import numpy as np
-import pandas as pd
+# Standard libraries
+import os  # File and directory operations
+import datetime  # Date and time utilities
+from pathlib import Path  # Path handling
 
-# Function to add experiment results to a csv file
+# Third-party libraries
+import numpy as np  # Numerical computing
+import pandas as pd  # Data manipulation
+
+# Project-specific modules
+from config import CONFIG  # Configuration settings
+
+
+# Function to add experiment results to csv and xlsx files
 def add_experiment_result(
-    train_data,
-    train_labels,
-    test_data,
-    test_labels,
     model,
-    batch_size,
-    epochs,
-    model_history,
-    threshold,
+    history,
     accuracy,
+    error_count,
     description=None
 ):
     """
     Extracts experiment parameters and results from the model and history,
-    then logs them into a CSV file.
+    then logs them into csv and xlsx files
+
+    Parameters:
+    - model (tf.keras.Model): The trained model.
+    - history (tf.keras.callbacks.History): The training history.
+    - error_count (int): The number of errors in the model.
+    - accuracy (float): The accuracy of the model.
+    - description (str, optional): A description of the experiment (default: None).
     """
 
+
     # Print header for the function
-    print("\n🎯 Experiment Results Logging 🎯\n")
+    print("\n🎯 Add Experiment Result 🎯\n")
 
     # Extract model name
     model_name = model.name
@@ -52,17 +61,17 @@ def add_experiment_result(
         num_units = None
 
     # Extract evaluation metrics
-    final_loss = model_history.history["loss"][-1]
-    min_loss = min(model_history.history["loss"])
-    max_loss = max(model_history.history["loss"])
-    final_val_loss = model_history.history.get("val_loss", [None])[-1]
+    final_loss = history.history["loss"][-1]
+    min_loss = min(history.history["loss"])
+    max_loss = max(history.history["loss"])
+    final_val_loss = history.history.get("val_loss", [None])[-1]
 
     # Create a dictionary of the extracted data
     row_data = {
         "Name": model_name,
         "Timestamp": timestamp,
-        "Batch Size": batch_size,
-        "Epochs": epochs,
+        "Batch Size": CONFIG.BATCH_SIZE,
+        "Epochs": CONFIG.EPOCHS,
         "Learning Rate": learning_rate,
         "Optimizer": optimizer,
         "Activation Function": activation_function,
@@ -72,22 +81,29 @@ def add_experiment_result(
         "Minimum Loss": min_loss,
         "Maximum Loss": max_loss,
         "Validation Loss": final_val_loss,
-        "Error Threshold": threshold,
+        "Error Threshold": CONFIG.THRESHOLD,
+        "Error Count": error_count,
         "Accuracy": accuracy,
         "Description": description
     }
 
     # Print values being logged
-    print("\n🔹 Experiment Results:\n")
+    print("🔹 Experiment Results:\n")
     for key, value in row_data.items():
         print(f"  {key}: {value}")
 
-    # Define CSV file path
-    csv_path = os.path.expanduser("/home/saeed/projects/ml/src/mr-engineer-playverse/boston-housing/experiment_results.csv")
+    # Get the directory of the current script
+    CURRENT_DIR = Path(__file__).parent
+
+    # Construct the path to the experiment results CSV file
+    CSV_PATH = CURRENT_DIR / "experiment_results.csv"
+
+    # Construct the path to the experiment results XLSX file
+    EXCEL_PATH = CURRENT_DIR / "experiment_results.xlsx"
 
     # Load existing CSV or create new DataFrame
     try:
-        experiment_results = pd.read_csv(csv_path)
+        experiment_results = pd.read_csv(CSV_PATH)
     except FileNotFoundError:
         experiment_results = pd.DataFrame(columns=row_data.keys())
 
@@ -100,9 +116,8 @@ def add_experiment_result(
     # Append new row to the DataFrame
     experiment_results = pd.concat([new_row, experiment_results.dropna(axis=1, how="all")], ignore_index=True)
 
-    # Save the updated DataFrame to CSV and Excel
-    excel_path = csv_path.replace(".csv", ".xlsx")
-    with pd.ExcelWriter(excel_path, engine="xlsxwriter") as writer:
+    # Write the updated DataFrame to the CSV and XLSX files
+    with pd.ExcelWriter(EXCEL_PATH, engine="xlsxwriter") as writer:
         experiment_results.to_excel(writer, index=False, sheet_name="Results")
 
         # Get the xlsxwriter workbook and worksheet objects
@@ -141,8 +156,12 @@ def add_experiment_result(
 
 
     # Ensure directory exists and save the file
-    os.makedirs(os.path.dirname(csv_path), exist_ok=True)
-    experiment_results.to_csv(csv_path, index=False)
+    os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
+    experiment_results.to_csv(CSV_PATH, index=False)
 
 # Print confirmation message
-print("\n✅ experiment.py successfully executed\n")
+print("\n✅ experiment.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")
+print("\n")

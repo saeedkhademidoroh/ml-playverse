@@ -1,5 +1,9 @@
-# Import necessary libraries
-import matplotlib.pyplot as plt
+# Data visualization
+import matplotlib.pyplot as plt  # Plotting and data visualization
+
+# Configuration
+from config import CONFIG  # Load configuration settings
+
 
 # Function to evaluate a regression model (actual vs. predicted)
 def evaluate_model(model, train_data, train_labels, test_data, test_labels):
@@ -15,7 +19,7 @@ def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     """
 
     # Print header for the function
-    print("\n🎯 Model Evaluation 🎯\n")
+    print("\n🎯 Evaluate Model 🎯\n")
 
     # Predict values
     train_preds = model.predict(train_data)
@@ -50,7 +54,7 @@ def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     plt.show()
 
 # Function to calculate the accuracy of a regression model
-def calculate_model_accuracy(model, test_data, test_labels, threshold):
+def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0):
     """
     Calculate the accuracy of a regression model by comparing predictions with actual values.
 
@@ -58,39 +62,43 @@ def calculate_model_accuracy(model, test_data, test_labels, threshold):
         model: Trained regression model (callable or with `predict()` method)
         test_data (numpy.ndarray): Testing feature set
         test_labels (numpy.ndarray): Testing labels
-        error_threshold (float): Threshold for considering a prediction as an error
+        error_threshold (float): Threshold for considering a prediction as an error (default: 5.0)
 
     Returns:
         accuracy (float): The accuracy of the model
-        num_errors (int): The number of errors above the threshold
+        error_count (int): The number of errors above the threshold
     """
 
+
     # Print header for the function
-    print("\n🎯 Model Accuracy Calculation 🎯\n")
+    print("\n🎯 Calculate Model Accuracy 🎯\n")
 
     # Predict values
     model_predictions = model.predict(test_data)
 
     # Initialize error counter
-    num_errors = 0
+    error_count = 0
 
     # Iterate over predictions and compare with actual values
-    print(f"\n🔹 Model errors above {threshold} (threshold):\n")
+    print(f"\n🔹 Model errors above {CONFIG.THRESHOLD} (threshold):\n")
     for index in range(len(model_predictions)):
-        if abs(model_predictions[index] - (test_labels[index])) > threshold:
+        if abs(model_predictions[index] - (test_labels[index])) > CONFIG.THRESHOLD:
             print(f"Prediction: {model_predictions[index]}, Actual: {test_labels[index]}")
-            num_errors += 1
+            error_count += 1
 
     # Calculate accuracy
-    accuracy = 1.0 - (num_errors / len(model_predictions))
+    accuracy = 1.0 - (error_count / len(model_predictions))
 
     # Print summary
     print("\n🔹 Model Accuracy Summary:\n")
-    print(f"Number of errors: {num_errors}")
+    print(f"Number of errors: {error_count}")
     print(f"Accuracy: {accuracy:.2f}")
 
     # Return accuracy and number of errors
-    return(accuracy)
+    return(error_count, accuracy)
 
 # Print confirmation message
-print("\n✅ evaluate.py successfully executed\n")
+print("\n✅ evaluate.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")

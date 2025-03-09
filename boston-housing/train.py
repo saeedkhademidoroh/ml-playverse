@@ -1,38 +1,43 @@
-# Import necessary libraries
-import tensorflow as tf
+# Configuration and callbacks
+from config import CONFIG  # Configurations for the project
+from keras.api.callbacks import EarlyStopping  # Early stopping callback for model training
 
-# Function to train the model
-def train_model(model, train_data, train_labels, test_data, test_labels, epochs=50, batch_size=32):
+
+def train_model(train_data, train_labels, test_data, test_labels, model):
     """
-    Trains the model and returns the training history.
+    Trains the given model and returns the trained model along with its training history.
 
     Parameters:
-    - model (tf.keras.Model): The compiled model.
     - train_data (numpy.ndarray): Training features.
     - train_labels (numpy.ndarray): Training labels.
     - test_data (numpy.ndarray): Testing features.
     - test_labels (numpy.ndarray): Testing labels.
-    - epochs (int): Number of training epochs (default: 50).
-    - batch_size (int): Batch size for training (default: 32).
+    - model (tf.keras.Model): The model to train.
 
     Returns:
+    - model (tf.keras.Model): The trained model.
     - history (tf.keras.callbacks.History): Training history.
     """
 
-    print("\n▶ Training the model...\n")
-
     # Train the model and store the training history
+    print("\n🎯 Train Model 🎯\n")
+
+    # Early stopping callback
+    early_stop = EarlyStopping(monitor="val_loss", patience=50, restore_best_weights=True)
+
     history = model.fit(
         x=train_data,
         y=train_labels,
-        epochs=epochs,
-        batch_size=batch_size,
-        validation_data=(test_data, test_labels)
-        # callbacks=[early_stop]  # Uncomment if you have early stopping
-    )  # type: ignore
+        epochs=CONFIG.EPOCHS,  # Taken from config.py
+        batch_size=CONFIG.BATCH_SIZE,  # Taken from config.py
+        validation_data=(test_data, test_labels),
+        callbacks=[early_stop]
+    )
 
-    return history
-
+    return model, history
 
 # Print confirmation message
-print("\n✅ train.py successfully executed\n")
+print("\n✅ train.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")

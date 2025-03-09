@@ -1,5 +1,8 @@
-# Ignore the sample codes
-
-# ignore the experiment results excel file
+# Excel metadata files
 ~$experiment_results.xlsx
+
+# Excel files
 experiment_results.xlsx
+
+# Python cache files
+__pycache__

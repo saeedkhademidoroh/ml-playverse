@@ -1,8 +1,13 @@
-# Importing necessary libraries
-import numpy as np
-import pandas as pd
-import tensorflow as tf
-from sklearn.preprocessing import MinMaxScaler
+# Data manipulation and numerical operations
+import numpy as np  # Efficient array operations
+import pandas as pd  # Data structures for handling structured data
+
+# Machine learning and deep learning
+import tensorflow as tf  # Core machine learning framework
+
+# Preprocessing
+from sklearn.preprocessing import MinMaxScaler  # Scales data to a range [0, 1]
+
 
 # Function to load a dataset
 def load_dataset():
@@ -25,7 +30,7 @@ def analyze_dataset(train_data, train_labels, test_data, test_labels):
     """
 
     # Print header for the function
-    print("\n🎯 Dataset Analysis 🎯\n")
+    print("🎯 Dataset Analysis 🎯")
 
     # Convert to DataFrame for better analysis
     train_df = pd.DataFrame(train_data)
@@ -49,10 +54,10 @@ def analyze_dataset(train_data, train_labels, test_data, test_labels):
 
     # Summary Statistics (using DataFrame)
     print("\n🔹 Statistical Summary:\n")
-    print("\nTrain Data Statistics:\n\n", train_df.describe())
-    print("\nTest Data Statistics:\n\n", test_df.describe())
-    print("\nTrain Labels Statistics:\n", train_labels_df.describe())
-    print("\nTest Labels Statistics:\n", test_labels_df.describe())
+    print("Train Data", train_df.describe())
+    print("\nTest Data", test_df.describe())
+    print("\nTrain Labels", train_labels_df.describe())
+    print("\nTest Labels", test_labels_df.describe())
 
 # Function to preprocess a dataset (normalization, reshaping, etc.)
 def preprocess_dataset(train_data, train_labels, test_data, test_labels):
@@ -69,13 +74,13 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     """
 
     # Print header for the function
-    print("\n🎯 Preprocessing Steps 🎯\n")
+    print("\n🎯 Preprocessing Steps 🎯")
 
     # Reshape labels to ensure compatibility
     train_labels = np.reshape(train_labels, (-1, 1))
     test_labels = np.reshape(test_labels, (-1, 1))
 
-    print("\n🔹 Shapes After Reshaping:")
+    print("\n🔹 Shapes After Reshaping:\n")
     print("Train Labels Shape:", train_labels.shape)
     print("Test Labels Shape:", test_labels.shape)
 
@@ -85,7 +90,7 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     train_labels_min, train_labels_max = train_labels.min(axis=0), train_labels.max(axis=0)
     test_labels_min, test_labels_max = test_labels.min(axis=0), test_labels.max(axis=0)
 
-    print("\n🔹 Pre-Normalization Data Ranges:")
+    print("\n🔹 Pre-Normalization Data Ranges:\n")
     print("Train Data Min:", train_data_min, "\nTrain Data Max:", train_data_max)
     print("Test Data Min:", test_data_min, "\nTest Data Max:", test_data_max)
 
@@ -101,12 +106,12 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     train_min_post, train_max_post = train_data.min(axis=0), train_data.max(axis=0)
     test_min_post, test_max_post = test_data.min(axis=0), test_data.max(axis=0)
 
-    print("\n🔹 Post-Normalization Data Ranges:")
+    print("\n🔹 Post-Normalization Data Ranges:\n")
     print("Post-Normalization Train Data Min:", train_min_post, "\nPost-Normalization Train Data Max:", train_max_post)
     print("Post-Normalization Test Data Min:", test_min_post, "\nPost-Normalization Test Data Max:", test_max_post)
 
     # Print min/max values for labels
-    print("\n🔹 (Optional) Label Ranges:")
+    print("\n🔹 (Optional) Label Ranges:\n")
     print("Train Labels Min:", train_labels_min, "\nTrain Labels Max:", train_labels_max)
     print("Test Labels Min:", test_labels_min, "\nTest Labels Max:", test_labels_max)
 
@@ -116,13 +121,17 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     train_labels = train_labels.astype(np.float32)
     test_labels = test_labels.astype(np.float32)
 
-    print("\n🔹 Data Types After Conversion:")
+    print("\n🔹 Data Types After Conversion:\n")
     print("Train Data Type:", train_data.dtype)
     print("Test Data Type:", test_data.dtype)
     print("Train Labels Type:", train_labels.dtype)
     print("Test Labels Type:", test_labels.dtype)
+    print("\n")
 
     return train_data, train_labels, test_data, test_labels
 
 # Print confirmation message
-print("\n✅ data.py successfully executed\n")
+print("\n✅ data.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")

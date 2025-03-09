@@ -1,12 +1,12 @@
-# Import necessary libraries
+# Keras model building and training
 from keras.api.models import Model  # Model class
-from keras.api.layers import Input, Dense  # Layers for the model
-from keras.api.optimizers import Adam, SGD  # Optimizer for the model
-from keras.api.losses import MeanSquaredError  # Loss function for the model
-from keras.api.callbacks import EarlyStopping  # Callback for the model
+from keras.api.layers import Input, Dense  # Layers for building the model
+from keras.api.optimizers import Adam, SGD  # Optimizers for training
+from keras.api.losses import MeanSquaredError  # Loss function for regression
+
 
 # Function to create a regression model
-def get_model(model_number: int) -> Model:
+def build_model(model_number: int) -> Model:
     """
     Returns a compiled regression model based on the specified model number.
 
@@ -14,10 +14,10 @@ def get_model(model_number: int) -> Model:
     - model_number (int): Model variant to create (1 to 5).
 
     Returns:
-    - Compiled Keras Model.
+    - Compiled model.
     """
 
-    print("\n🎯 Regression Model Creation 🎯\n")
+    print("\n🎯 Build Model 🎯\n")
 
     # Define input layer (common for all models)
     input_layer = Input(shape=(13,))
@@ -65,4 +65,7 @@ def get_model(model_number: int) -> Model:
     return model
 
 # Print confirmation message
-print("\n✅ model.py successfully executed\n")
+print("\n✅ model.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")

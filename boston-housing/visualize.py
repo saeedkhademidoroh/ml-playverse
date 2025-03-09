@@ -1,10 +1,11 @@
-# Import necessary libraries
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# Data visualization libraries
+import pandas as pd  # Data manipulation with pandas
+import matplotlib.pyplot as plt  # Plotting library
+import seaborn as sns  # Enhanced data visualization based on matplotlib
+
 
 # Function to visualize model training history
-def visualize_model_history(model_history):
+def visualize_history(history):
     """
     Plots the training and validation metrics of a Keras model.
 
@@ -13,10 +14,10 @@ def visualize_model_history(model_history):
     """
 
     # Print header for the function
-    print("\n🎯 Training History Visualization 🎯\n")
+    print("\n🎯 Visualize History 🎯")
 
     # Convert the history.history dictionary to a DataFrame
-    history_df = pd.DataFrame(model_history.history)
+    history_df = pd.DataFrame(history.history)
 
     # Rename columns for better readability
     history_df.rename(columns={
@@ -95,4 +96,7 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels):
     plt.show()
 
 # Print confirmation message
-print("\n✅ visualize.py successfully executed\n")
+print("\n✅ visualize.py successfully executed")
+
+# Print the log message
+print("\n🔹 Empty log message")
