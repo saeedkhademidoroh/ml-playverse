@@ -1,4 +1,4 @@
-# Configuration and callbacks
+# Project-specific imports
 from config import CONFIG  # Configurations for the project
 from keras.api.callbacks import EarlyStopping  # Early stopping callback for model training
 
@@ -23,7 +23,7 @@ def train_model(train_data, train_labels, test_data, test_labels, model):
     print("\n🎯 Train Model 🎯\n")
 
     # Early stopping callback
-    early_stop = EarlyStopping(monitor="val_loss", patience=50, restore_best_weights=True)
+    early_stop = EarlyStopping(monitor="val_loss", patience=CONFIG.PATIENCE, restore_best_weights=True)
 
     history = model.fit(
         x=train_data,
@@ -38,6 +38,3 @@ def train_model(train_data, train_labels, test_data, test_labels, model):
 
 # Print confirmation message
 print("\n✅ train.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")

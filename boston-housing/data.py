@@ -1,11 +1,7 @@
-# Data manipulation and numerical operations
+# Third-party imports
 import numpy as np  # Efficient array operations
 import pandas as pd  # Data structures for handling structured data
-
-# Machine learning and deep learning
 import tensorflow as tf  # Core machine learning framework
-
-# Preprocessing
 from sklearn.preprocessing import MinMaxScaler  # Scales data to a range [0, 1]
 
 
@@ -126,12 +122,8 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Test Data Type:", test_data.dtype)
     print("Train Labels Type:", train_labels.dtype)
     print("Test Labels Type:", test_labels.dtype)
-    print("\n")
 
     return train_data, train_labels, test_data, test_labels
 
 # Print confirmation message
 print("\n✅ data.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")

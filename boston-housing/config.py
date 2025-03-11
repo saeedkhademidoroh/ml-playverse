@@ -1,4 +1,4 @@
-# Standard libraries
+# Standard imports
 import json  # JSON file handling
 from pathlib import Path  # Path operations
 from dataclasses import dataclass  # Immutable data structures
@@ -9,6 +9,7 @@ class Config:
     BATCH_SIZE: int
     EPOCHS: int
     THRESHOLD: float
+    PATIENCE: int
 
     @staticmethod
     def load_from_json() -> "Config":
@@ -27,7 +28,7 @@ class Config:
             config_data = json.load(file)
 
         # Required keys
-        required_keys = ["BATCH_SIZE", "EPOCHS", "THRESHOLD"]
+        required_keys = ["BATCH_SIZE", "EPOCHS", "THRESHOLD", "PATIENCE"]
         missing_keys = [key for key in required_keys if key not in config_data]
 
         if missing_keys:
@@ -37,6 +38,7 @@ class Config:
             BATCH_SIZE=config_data["BATCH_SIZE"],
             EPOCHS=config_data["EPOCHS"],
             THRESHOLD=config_data["THRESHOLD"],
+            PATIENCE=config_data["PATIENCE"],
         )
 
 
@@ -44,10 +46,4 @@ class Config:
 CONFIG = Config.load_from_json()
 
 # Print confirmation message
-print("\n✅ config.py successfully executed")
-
-# Print the log message
-print("\n🔹 Configuration:")
-print(f"Batch size: {CONFIG.BATCH_SIZE}")
-print(f"Epochs: {CONFIG.EPOCHS}")
-print(f"Threshold: {CONFIG.THRESHOLD}")
+print("\n✅ config.py successfully executed\n")

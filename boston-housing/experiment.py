@@ -1,15 +1,19 @@
-# Standard libraries
+# Standard imports
+import sys  # System-specific parameters and functions
 import os  # File and directory operations
 import datetime  # Date and time utilities
 from pathlib import Path  # Path handling
 
-# Third-party libraries
+# Third-party imports
 import numpy as np  # Numerical computing
 import pandas as pd  # Data manipulation
 
-# Project-specific modules
+# Project-specific imports
 from config import CONFIG  # Configuration settings
-
+from data import load_dataset, preprocess_dataset  # Data loading and preprocessing
+from evaluate import calculate_model_accuracy  # Model evaluation
+from model import build_model  # Model building
+from train import train_model  # Model training
 
 # Function to add experiment results to csv and xlsx files
 def add_experiment_result(
@@ -159,9 +163,70 @@ def add_experiment_result(
     os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
     experiment_results.to_csv(CSV_PATH, index=False)
 
+# Function to run experiments for specified models
+def run_experiment(model_numbers, runs=1, replace=False):
+    """
+    Runs training and evaluation for specified models.
+
+    Parameters:
+    - model_numbers (int | tuple[int, int] | list[int]):
+        - If an integer is provided, runs the experiment for that model only.
+        - If a tuple (start, end) is given, runs experiments for models in that range.
+        - If a list is given, runs experiments for the specified models.
+    - runs (int): Number of times to train each model (default: 1).
+    - replace (bool): If True, deletes output files. If False, updates them. Default is False.
+    """
+
+     # Print header for the function
+    print("\n🎯 Run Experiment 🎯\n")
+
+    # Define paths
+    current_dir = Path(__file__).parent
+    csv_path = current_dir / "experiment_results.csv"
+    xlsx_path = current_dir / "experiment_results.xlsx"
+    log_path = current_dir / "experiment_log.txt"
+
+    # Delete files if the flag is set
+    for file_path in [csv_path, xlsx_path, log_path]:
+        if replace and file_path.exists():
+            os.remove(file_path)
+            print(f"Replacing {file_path.name} ...")
+        else:
+            print(f"Updating {file_path.name} ...")
+    print("")
+
+    # Open log file for writing
+    with open(log_path, "a") as f:
+        # Redirect stdout and stderr to file
+        sys.stdout = f
+        sys.stderr = f
+
+        # Handle different model selection inputs
+        if isinstance(model_numbers, int):
+            model_numbers = [model_numbers]  # Convert single model to a list
+        elif isinstance(model_numbers, tuple) and len(model_numbers) == 2:
+            model_numbers = list(range(model_numbers[0], model_numbers[1] + 1))  # Create range
+
+        for model_number in model_numbers:
+            for run in range(1, runs + 1):
+                print(f"\n🚀 Launching m{model_number} ({run}/{runs}) ...")
+
+                # Load and preprocess dataset
+                (train_data, train_labels), (test_data, test_labels) = load_dataset()
+                train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
+
+                # Build and train model
+                model = build_model(model_number)
+                model, history = train_model(train_data, train_labels, test_data, test_labels, model)
+
+                # Evaluate and log results
+                error_count, accuracy = calculate_model_accuracy(model, test_data, test_labels)
+                add_experiment_result(model, history, accuracy, error_count)
+
+        # Restore stdout and stderr to terminal
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
+
+
 # Print confirmation message
 print("\n✅ experiment.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")
-print("\n")

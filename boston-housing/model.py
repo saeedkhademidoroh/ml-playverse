@@ -1,4 +1,4 @@
-# Keras model building and training
+# Third-party imports
 from keras.api.models import Model  # Model class
 from keras.api.layers import Input, Dense  # Layers for building the model
 from keras.api.optimizers import Adam, SGD  # Optimizers for training
@@ -66,6 +66,3 @@ def build_model(model_number: int) -> Model:
 
 # Print confirmation message
 print("\n✅ model.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")

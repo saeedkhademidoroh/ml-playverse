@@ -1,4 +1,4 @@
-# Data visualization libraries
+# Third-party imports
 import pandas as pd  # Data manipulation with pandas
 import matplotlib.pyplot as plt  # Plotting library
 import seaborn as sns  # Enhanced data visualization based on matplotlib
@@ -97,6 +97,3 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels):
 
 # Print confirmation message
 print("\n✅ visualize.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")

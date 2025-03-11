@@ -1,7 +1,7 @@
-# Data visualization
+# Third-party imports
 import matplotlib.pyplot as plt  # Plotting and data visualization
 
-# Configuration
+# Project-specific imports
 from config import CONFIG  # Load configuration settings
 
 
@@ -71,7 +71,7 @@ def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0)
 
 
     # Print header for the function
-    print("\n🎯 Calculate Model Accuracy 🎯\n")
+    print("\n🎯 Calculate Model Accuracy 🎯")
 
     # Predict values
     model_predictions = model.predict(test_data)
@@ -99,6 +99,3 @@ def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0)
 
 # Print confirmation message
 print("\n✅ evaluate.py successfully executed")
-
-# Print the log message
-print("\n🔹 Empty log message")

@@ -1,5 +1,6 @@
 {
     "BATCH_SIZE": 8,
     "EPOCHS": 200,
-    "THRESHOLD": 5.0
+    "THRESHOLD": 5.0,
+    "PATIENCE": 50
 }
