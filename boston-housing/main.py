@@ -2,7 +2,7 @@
 from experiment import run_experiment
 
 # Run Model 1 to 5, each 5 times
-run_experiment((1, 5), runs=5, replace=True)
+run_experiment((1, 11), runs=5, replace=True)
 
 # Run Model 3 one time
 # run_experiment(3)
