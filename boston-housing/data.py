@@ -26,7 +26,7 @@ def analyze_dataset(train_data, train_labels, test_data, test_labels):
     """
 
     # Print header for the function
-    print("🎯 Dataset Analysis 🎯")
+    print("\n🎯 Dataset Analysis 🎯")
 
     # Convert to DataFrame for better analysis
     train_df = pd.DataFrame(train_data)
@@ -72,19 +72,29 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     # Print header for the function
     print("\n🎯 Preprocessing Steps 🎯")
 
+    print("\n🔹 Before Reshaping:\n")
+    print("Train Labels Shape:", train_labels.shape)
+    print("Test Labels Shape:", test_labels.shape)
+
     # Reshape labels to ensure compatibility
     train_labels = np.reshape(train_labels, (-1, 1))
     test_labels = np.reshape(test_labels, (-1, 1))
 
-    print("\n🔹 Shapes After Reshaping:\n")
+    print("\n🔹 After Reshaping:\n")
     print("Train Labels Shape:", train_labels.shape)
     print("Test Labels Shape:", test_labels.shape)
 
-    # Check pre-normalization min/max values
-    train_data_min, train_data_max = train_data.min(axis=0), train_data.max(axis=0)
-    test_data_min, test_data_max = test_data.min(axis=0), test_data.max(axis=0)
+    # Check label ranges
     train_labels_min, train_labels_max = train_labels.min(axis=0), train_labels.max(axis=0)
     test_labels_min, test_labels_max = test_labels.min(axis=0), test_labels.max(axis=0)
+
+    print("\n🔹 Label Ranges:\n")
+    print("Train Labels Min:", train_labels_min, "\nTrain Labels Max:", train_labels_max)
+    print("Test Labels Min:", test_labels_min, "\nTest Labels Max:", test_labels_max)
+
+    # Check pre-normalization data ranges
+    train_data_min, train_data_max = train_data.min(axis=0), train_data.max(axis=0)
+    test_data_min, test_data_max = test_data.min(axis=0), test_data.max(axis=0)
 
     print("\n🔹 Pre-Normalization Data Ranges:\n")
     print("Train Data Min:", train_data_min, "\nTrain Data Max:", train_data_max)
@@ -106,10 +116,11 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Post-Normalization Train Data Min:", train_min_post, "\nPost-Normalization Train Data Max:", train_max_post)
     print("Post-Normalization Test Data Min:", test_min_post, "\nPost-Normalization Test Data Max:", test_max_post)
 
-    # Print min/max values for labels
-    print("\n🔹 (Optional) Label Ranges:\n")
-    print("Train Labels Min:", train_labels_min, "\nTrain Labels Max:", train_labels_max)
-    print("Test Labels Min:", test_labels_min, "\nTest Labels Max:", test_labels_max)
+    print("\n🔹 Data Types Before Conversion:\n")
+    print("Train Data Type:", train_data.dtype)
+    print("Test Data Type:", test_data.dtype)
+    print("Train Labels Type:", train_labels.dtype)
+    print("Test Labels Type:", test_labels.dtype)
 
     # Convert dataset values to float32 for optimization
     train_data = train_data.astype(np.float32)

@@ -3,7 +3,7 @@ from keras.api.models import Model  # Model class
 from keras.api.layers import Input, Dense  # Layers for building the model
 from keras.api.optimizers import Adam, SGD  # Optimizers for training
 from keras.api.losses import MeanSquaredError  # Loss function for regression
-from keras.api.regularizers import l2
+from keras.api.regularizers import l2 # Regularization for overfitting
 
 
 # Function to create a regression model

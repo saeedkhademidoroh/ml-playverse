@@ -4,36 +4,6 @@ import matplotlib.pyplot as plt  # Plotting library
 import seaborn as sns  # Enhanced data visualization based on matplotlib
 
 
-# Function to visualize model training history
-def visualize_history(history):
-    """
-    Plots the training and validation metrics of a Keras model.
-
-    Parameters:
-    model_history (History): The History object returned by the fit method of a Keras model.
-    """
-
-    # Print header for the function
-    print("\n🎯 Visualize History 🎯")
-
-    # Convert the history.history dictionary to a DataFrame
-    history_df = pd.DataFrame(history.history)
-
-    # Rename columns for better readability
-    history_df.rename(columns={
-        'loss': 'Training Loss',
-        'val_loss': 'Validation Loss'
-    }, inplace=True)
-
-    # Plot the DataFrame
-    history_df.plot(figsize=(10, 6))
-    plt.title('Model Training History')
-    plt.xlabel('Epoch')
-    plt.ylabel('Metric')
-    plt.grid(True)
-
-    # Display the plot
-    plt.show()
 
 # Function to visualize a dataset (plotting)
 def visualize_dataset(train_data, train_labels, test_data, test_labels):
@@ -93,6 +63,37 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels):
     plt.ylabel("Count")
     plt.legend()
     plt.title("Label Distribution (Train vs. Test)\n")
+    plt.show()
+
+# Function to visualize model training history
+def visualize_history(history):
+    """
+    Plots the training and validation metrics of a Keras model.
+
+    Parameters:
+    model_history (History): The History object returned by the fit method of a Keras model.
+    """
+
+    # Print header for the function
+    print("\n🎯 Visualize History 🎯")
+
+    # Convert the history.history dictionary to a DataFrame
+    history_df = pd.DataFrame(history.history)
+
+    # Rename columns for better readability
+    history_df.rename(columns={
+        'loss': 'Training Loss',
+        'val_loss': 'Validation Loss'
+    }, inplace=True)
+
+    # Plot the DataFrame
+    history_df.plot(figsize=(10, 6))
+    plt.title('Model Training History')
+    plt.xlabel('Epoch')
+    plt.ylabel('Metric')
+    plt.grid(True)
+
+    # Display the plot
     plt.show()
 
 # Print confirmation message
