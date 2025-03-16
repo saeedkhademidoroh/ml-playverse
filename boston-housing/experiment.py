@@ -40,55 +40,33 @@ def add_experiment_result(
     print("\n🎯 Add Experiment Result 🎯\n")
 
     # Extract model name
-    model_name = model.name
+    name = model.name
 
     # Generate a unique identifier using current date and time
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    time = datetime.datetime.now().strftime("%H:%M:%S")
 
-    # Extract training parameters
-    learning_rate = getattr(model.optimizer, "learning_rate", None)
-    if hasattr(learning_rate, "numpy"):
-        learning_rate = learning_rate.numpy()  # Convert Tensor to float
+    # Extract model architecture details
+    layers_count = len(model.layers)
 
     # Extract optimizer details
     optimizer = type(model.optimizer).__name__
 
-    # Extract model architecture details
-    dense_layers = [layer for layer in model.layers if layer.__class__.__name__ == "Dense"]
-    if dense_layers:
-        activation_function = dense_layers[0].activation.__name__
-        num_layers = len(dense_layers)
-        num_units = dense_layers[0].units
-    else:
-        activation_function = None
-        num_layers = len(model.layers)
-        num_units = None
-
     # Extract evaluation metrics
-    final_loss = history.history["loss"][-1]
     min_loss = min(history.history["loss"])
-    max_loss = max(history.history["loss"])
-    final_val_loss = history.history.get("val_loss", [None])[-1]
+    final_loss = history.history["loss"][-1]
+    val_loss = history.history.get("val_loss", [None])[-1]
 
     # Create a dictionary of the extracted data
     row_data = {
-        "Name": model_name,
-        "Timestamp": timestamp,
-        "Batch Size": CONFIG.BATCH_SIZE,
-        "Epochs": CONFIG.EPOCHS,
-        "Learning Rate": learning_rate,
-        "Optimizer": optimizer,
-        "Activation Function": activation_function,
-        "Number of Layers": num_layers,
-        "Number of Units": num_units,
-        "Loss": final_loss,
-        "Minimum Loss": min_loss,
-        "Maximum Loss": max_loss,
-        "Validation Loss": final_val_loss,
-        "Error Threshold": CONFIG.THRESHOLD,
-        "Error Count": error_count,
-        "Accuracy": accuracy,
-        "Description": description
+        "#": name,
+        "Time": time,
+        "L-Count": layers_count,
+        "O-Type": optimizer,
+        "M-Loss": int(min_loss),
+        "F-Loss": int(final_loss),
+        "V-Loss": int(val_loss),
+        "E-Count": error_count,
+        "Accuracy": int(accuracy * 100),
     }
 
     # Print values being logged
@@ -216,12 +194,12 @@ def run_experiment(model_numbers, runs=1, replace=False):
                 train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
 
                 # Build and train model
-                model = build_model(model_number)
+                model, description = build_model(model_number)
                 model, history = train_model(train_data, train_labels, test_data, test_labels, model)
 
                 # Evaluate and log results
                 error_count, accuracy = calculate_model_accuracy(model, test_data, test_labels)
-                add_experiment_result(model, history, accuracy, error_count)
+                add_experiment_result(model, history, accuracy, error_count, description)
 
         # Restore stdout and stderr to terminal
         sys.stdout = sys.__stdout__
