@@ -1,24 +1,32 @@
 # Third-party imports
-import matplotlib.pyplot as plt  # Plotting and data visualization
+import matplotlib.pyplot as plt # Plotting and data visualization
 
 # Project-specific imports
-from config import CONFIG  # Load configuration settings
+from config import CONFIG # Load configuration settings
 
 
-# Function to evaluate a regression model (actual vs. predicted)
+# Function to evaluate model (actual vs. predicted)
 def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     """
-    Visualize actual vs. predicted values for both training and test datasets.
+    Visualizes actual vs. predicted values for both training and test datasets.
+
+    This function generates side-by-side plots comparing true and predicted
+    values for training and test datasets, which helps in evaluating how
+    well model is performing.
 
     Parameters:
-        model: Trained regression model (callable or with `predict()` method)
-        train_data (numpy.ndarray): Training feature set
-        test_data (numpy.ndarray): Testing feature set
-        train_labels (numpy.ndarray): Training labels
-        test_labels (numpy.ndarray): Testing labels
+        model (tf.keras.Model): A trained model that has `predict()` method.
+        train_data (numpy.ndarray): Feature set for training data.
+        train_labels (numpy.ndarray): True labels for training data.
+        test_data (numpy.ndarray): Feature set for test data.
+        test_labels (numpy.ndarray): True labels for test data.
+
+    Returns:
+        None: This function does not return any values; it displays plots directly.
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Evaluate Model 🎯\n")
 
     # Predict values
@@ -53,24 +61,30 @@ def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     plt.tight_layout()
     plt.show()
 
-# Function to calculate the accuracy of a regression model
-def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0):
+
+# Function to calculate accuracy of model
+def calculate_model_accuracy(model, test_data, test_labels):
     """
-    Calculate the accuracy of a regression model by comparing predictions with actual values.
+    Calculates accuracy of model by comparing predictions with actual values.
+
+    This function computes accuracy of model based on number of
+    errors (absolute difference between predicted and true values) exceeding
+    given threshold. The accuracy is then calculated as proportion of
+    correct predictions.
 
     Parameters:
-        model: Trained regression model (callable or with `predict()` method)
-        test_data (numpy.ndarray): Testing feature set
-        test_labels (numpy.ndarray): Testing labels
-        error_threshold (float): Threshold for considering a prediction as an error (default: 5.0)
+        model (tf.keras.Model): A trained model that has `predict()` method.
+        test_data (numpy.ndarray): Feature set for test data.
+        test_labels (numpy.ndarray): True labels for test data.
 
     Returns:
-        accuracy (float): The accuracy of the model
-        error_count (int): The number of errors above the threshold
+        tuple:
+            - error_count (int): The number of predictions with errors exceeding threshold.
+            - accuracy (float): The proportion of correct predictions, calculated as (1 - error_count / total predictions).
     """
 
 
-    # Print header for the function
+    # Print header for function
     print("\n🎯 Calculate Model Accuracy 🎯")
 
     # Predict values
@@ -96,6 +110,7 @@ def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0)
 
     # Return accuracy and number of errors
     return(error_count, accuracy)
+
 
 # Print confirmation message
 print("\n✅ evaluate.py successfully executed")

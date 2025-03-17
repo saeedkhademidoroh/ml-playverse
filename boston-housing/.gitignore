@@ -1,8 +1,8 @@
-# Excel metadata files
+# Excel metadata
 ~$experiment_results.xlsx
 
-# Excel files
+# Excel file
 experiment_results.xlsx
 
-# Python cache files
+# Python cache
 __pycache__

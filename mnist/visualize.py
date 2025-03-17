@@ -1,25 +1,32 @@
 # Third-party imports
-import pandas as pd  # Data manipulation with pandas
-import matplotlib.pyplot as plt  # Plotting library
-import seaborn as sns  # Enhanced data visualization based on matplotlib
+import pandas as pd # Data manipulation with pandas
+import matplotlib.pyplot as plt # Plotting library
 
 # Function to visualize dataset
 def visualize_dataset(train_data, train_labels, test_data, test_labels, num_samples=20):
     """
-    Display actual samples of the dataset for better understanding.
+    Displays actual samples of dataset for better understanding.
 
-    - For tabular datasets: Prints and displays a dataframe preview.
-    - For image datasets: Displays sample images with labels.
+    For tabular datasets:
+    - Prints preview of dataset as pandas DataFrame.
+
+    For image datasets:
+    - Displays grid of sample images with corresponding labels.
 
     Parameters:
-        train_data (numpy.ndarray): Training feature set
-        test_data (numpy.ndarray): Testing feature set
-        train_labels (numpy.ndarray): Training labels
-        test_labels (numpy.ndarray): Testing labels
-        num_samples (int): Number of samples to display (default: 20)
+        train_data (numpy.ndarray): Training feature set.
+        test_data (numpy.ndarray): Testing feature set.
+        train_labels (numpy.ndarray): Training labels.
+        test_labels (numpy.ndarray): Testing labels.
+        num_samples (int): Number of samples to display (default: 20).
+
+    Notes:
+        - Only supports 2D (tabular) and 3D (image) datasets.
+        - Ensures `num_samples` does not exceed dataset size.
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Visualize Dataset 🎯")
 
     # Ensure num_samples does not exceed dataset size
@@ -55,16 +62,24 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels, num_samp
 # Function to visualize model training history
 def visualize_history(history):
     """
-    Plots the training and validation metrics of a Keras model.
+    Plots training and validation metrics of Keras model.
+
+    Displays:
+    - Training loss vs. Validation loss across epochs.
 
     Parameters:
-    model_history (History): The History object returned by the fit method of a Keras model.
+        history (tf.keras.callbacks.History): The History object from model.fit().
+
+    Notes:
+        - The history dictionary keys are renamed for better readability.
+        - A line plot is generated for visual comparison.
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Visualize History 🎯")
 
-    # Convert the history.history dictionary to a DataFrame
+    # Convert history.history dictionary to DataFrame
     history_df = pd.DataFrame(history.history)
 
     # Rename columns for better readability
@@ -73,14 +88,14 @@ def visualize_history(history):
         'val_loss': 'Validation Loss'
     }, inplace=True)
 
-    # Plot the DataFrame
+    # Plot DataFrame
     history_df.plot(figsize=(10, 6))
     plt.title('Model Training History')
     plt.xlabel('Epoch')
     plt.ylabel('Metric')
     plt.grid(True)
 
-    # Display the plot
+    # Display plot
     plt.show()
 
 # Print confirmation message

@@ -1,14 +1,13 @@
 # Third-party imports
-import pandas as pd  # Data manipulation with pandas
-import matplotlib.pyplot as plt  # Plotting library
-import seaborn as sns  # Enhanced data visualization based on matplotlib
+import pandas as pd # Data manipulation with pandas
+import matplotlib.pyplot as plt # Plotting library
+import seaborn as sns # Enhanced data visualization based on matplotlib
 
 
-
-# Function to visualize a dataset (plotting)
+# Function to visualize dataset (plotting)
 def visualize_dataset(train_data, train_labels, test_data, test_labels):
     """
-    Visualize the dataset by plotting:
+    Visualize dataset by plotting:
     - Feature distributions
     - Correlation heatmap
     - Outlier detection (boxplots)
@@ -21,7 +20,8 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels):
         test_labels (numpy.ndarray): Testing labels
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Dataset Visualization 🎯\n")
 
     # Feature Distributions
@@ -65,19 +65,21 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels):
     plt.title("Label Distribution (Train vs. Test)\n")
     plt.show()
 
+
 # Function to visualize model training history
 def visualize_history(history):
     """
-    Plots the training and validation metrics of a Keras model.
+    Plots training and validation metrics of Keras model.
 
     Parameters:
-    model_history (History): The History object returned by the fit method of a Keras model.
+    model_history (History): The History object returned by fit method of Keras model.
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Visualize History 🎯")
 
-    # Convert the history.history dictionary to a DataFrame
+    # Convert history.history dictionary to DataFrame
     history_df = pd.DataFrame(history.history)
 
     # Rename columns for better readability
@@ -86,15 +88,16 @@ def visualize_history(history):
         'val_loss': 'Validation Loss'
     }, inplace=True)
 
-    # Plot the DataFrame
+    # Plot DataFrame
     history_df.plot(figsize=(10, 6))
     plt.title('Model Training History')
     plt.xlabel('Epoch')
     plt.ylabel('Metric')
     plt.grid(True)
 
-    # Display the plot
+    # Display plot
     plt.show()
+
 
 # Print confirmation message
 print("\n✅ visualize.py successfully executed")

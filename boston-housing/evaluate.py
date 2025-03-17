@@ -1,24 +1,25 @@
 # Third-party imports
-import matplotlib.pyplot as plt  # Plotting and data visualization
+import matplotlib.pyplot as plt # Plotting and data visualization
 
 # Project-specific imports
-from config import CONFIG  # Load configuration settings
+from config import CONFIG # Load configuration settings
 
 
-# Function to evaluate a regression model (actual vs. predicted)
+# Function to evaluate model (actual vs. predicted)
 def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     """
-    Visualize actual vs. predicted values for both training and test datasets.
+    Visualizes actual vs. predicted values for both training and test datasets.
 
     Parameters:
-        model: Trained regression model (callable or with `predict()` method)
+        model: A trained model (callable or with `predict()` method)
         train_data (numpy.ndarray): Training feature set
-        test_data (numpy.ndarray): Testing feature set
         train_labels (numpy.ndarray): Training labels
+        test_data (numpy.ndarray): Testing feature set
         test_labels (numpy.ndarray): Testing labels
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Evaluate Model 🎯\n")
 
     # Predict values
@@ -53,24 +54,24 @@ def evaluate_model(model, train_data, train_labels, test_data, test_labels):
     plt.tight_layout()
     plt.show()
 
-# Function to calculate the accuracy of a regression model
-def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0):
+
+# Function to calculate accuracy of model
+def calculate_model_accuracy(model, test_data, test_labels):
     """
-    Calculate the accuracy of a regression model by comparing predictions with actual values.
+    Calculates accuracy of model by comparing predictions with actual values.
 
     Parameters:
-        model: Trained regression model (callable or with `predict()` method)
+        model: A trained model (callable or with `predict()` method)
         test_data (numpy.ndarray): Testing feature set
         test_labels (numpy.ndarray): Testing labels
-        error_threshold (float): Threshold for considering a prediction as an error (default: 5.0)
 
     Returns:
-        accuracy (float): The accuracy of the model
-        error_count (int): The number of errors above the threshold
+        accuracy (float): The accuracy of model
+        error_count (int): The number of errors exceeding threshold
     """
 
 
-    # Print header for the function
+    # Print header for function
     print("\n🎯 Calculate Model Accuracy 🎯")
 
     # Predict values
@@ -96,6 +97,7 @@ def calculate_model_accuracy(model, test_data, test_labels, error_threshold=5.0)
 
     # Return accuracy and number of errors
     return(error_count, accuracy)
+
 
 # Print confirmation message
 print("\n✅ evaluate.py successfully executed")

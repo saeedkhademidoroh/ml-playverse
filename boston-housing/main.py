@@ -1,8 +1,9 @@
 # Project-specific imports
-from experiment import run_experiment
+from experiment import run_experiment # Function to run experiments
 
-# Run Model 1 to 5, each 5 times
-run_experiment((1, 11), runs=5, replace=True)
+
+# Run Model 1 to 11, each 10 time
+run_experiment((1, 11), runs=10, replace=True)
 
 # Run Model 3 one time
 # run_experiment(3)

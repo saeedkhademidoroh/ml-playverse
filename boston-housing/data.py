@@ -1,31 +1,40 @@
 # Third-party imports
-import numpy as np  # Efficient array operations
-import pandas as pd  # Data structures for handling structured data
-import tensorflow as tf  # Core machine learning framework
-from sklearn.preprocessing import MinMaxScaler  # Scales data to a range [0, 1]
+import numpy as np # Efficient array operations
+import pandas as pd # Data structures for handling structured data
+import tensorflow as tf # Core machine learning framework
+from sklearn.preprocessing import MinMaxScaler # Scales data to range [0, 1]
 
 
-# Function to load a dataset
+# Function to load dataset
 def load_dataset():
-    """Loads the dataset and returns train/test splits."""
+    """
+    Loads and returns Boston Housing dataset as training and test splits.
+
+    Returns:
+        tuple: A tuple containing training data, training labels, test data, and test labels
+    """
+
+
     return tf.keras.datasets.boston_housing.load_data()
 
-# Function to analyze a dataset (statistical analysis)
+
+# Function to analyze dataset (statistical analysis)
 def analyze_dataset(train_data, train_labels, test_data, test_labels):
     """
-    Perform statistical analysis of the dataset, including:
+    Performs statistical analysis on given dataset, including:
     - Shape and data types
     - Missing values
     - Summary statistics
 
     Parameters:
         train_data (numpy.ndarray): Training feature set
-        test_data (numpy.ndarray): Testing feature set
         train_labels (numpy.ndarray): Training labels
+        test_data (numpy.ndarray): Testing feature set
         test_labels (numpy.ndarray): Testing labels
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Dataset Analysis 🎯")
 
     # Convert to DataFrame for better analysis
@@ -48,28 +57,35 @@ def analyze_dataset(train_data, train_labels, test_data, test_labels):
     print(f"Train labels missing values: {np.isnan(train_labels).sum()}")
     print(f"Test labels missing values: {np.isnan(test_labels).sum()}")
 
-    # Summary Statistics (using DataFrame)
+    # Summary Statistics
     print("\n🔹 Statistical Summary:\n")
     print("Train Data", train_df.describe())
     print("\nTest Data", test_df.describe())
     print("\nTrain Labels", train_labels_df.describe())
     print("\nTest Labels", test_labels_df.describe())
 
-# Function to preprocess a dataset (normalization, reshaping, etc.)
+
+# Function to preprocess dataset (normalization, reshaping, etc.)
 def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     """
-    Preprocesses data for regression models:
-    - Reshapes labels
-    - Prints pre-normalization min/max ranges
-    - Applies MinMaxScaler normalization
-    - Prints post-normalization min/max ranges
-    - Converts data types to float32 for optimization
+    Preprocesses dataset for models by:
+    - Reshaping labels
+    - Normalizing data using MinMaxScaler
+    - Printing pre and post normalization data ranges
+    - Converting data types to float32 for optimization
+
+    Parameters:
+        train_data (numpy.ndarray): Training feature set
+        train_labels (numpy.ndarray): Training labels
+        test_data (numpy.ndarray): Testing feature set
+        test_labels (numpy.ndarray): Testing labels
 
     Returns:
-    - Scaled train_data, train_labels, test_data, test_labels
+        tuple: A tuple containing scaled and reshaped training and test data and labels
     """
 
-    # Print header for the function
+
+    # Print header for function
     print("\n🎯 Preprocessing Steps 🎯")
 
     print("\n🔹 Before Reshaping:\n")
@@ -100,11 +116,11 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Train Data Min:", train_data_min, "\nTrain Data Max:", train_data_max)
     print("Test Data Min:", test_data_min, "\nTest Data Max:", test_data_max)
 
-    # Fit the scaler on training data only
+    # Fit scaler on training data only
     min_max_scaler = MinMaxScaler()
     min_max_scaler.fit(train_data)
 
-    # Transform both training and test data using the scaler
+    # Transform both training and test data using scaler
     train_data = min_max_scaler.transform(train_data)
     test_data = min_max_scaler.transform(test_data)
 
@@ -135,6 +151,7 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Test Labels Type:", test_labels.dtype)
 
     return train_data, train_labels, test_data, test_labels
+
 
 # Print confirmation message
 print("\n✅ data.py successfully executed")

@@ -1,24 +1,56 @@
 # Standard imports
-import json  # JSON file handling
-from pathlib import Path  # Path operations
-from dataclasses import dataclass  # Immutable data structures
+import json # JSON file handling
+from pathlib import Path # Path operations
+from dataclasses import dataclass # Immutable data structures
 
 
-@dataclass(frozen=True)  # This makes the dataclass immutable
+@dataclass(frozen=True) # This makes dataclass immutable
 class Config:
+    """
+    A configuration class that holds hyperparameters for model training.
+
+    This class is immutable and contains various hyperparameters used for model
+    training and evaluation.
+
+    Attributes:
+        Any parameter that is specified in configuration JSON file.
+
+    Methods:
+        load_from_json() -> Config:
+            Loads configuration from JSON file and returns Config instance.
+            Ensures all required fields are present in file.
+    """
+
+
     BATCH_SIZE: int
     EPOCHS: int
     THRESHOLD: float
     PATIENCE: int
 
+
     @staticmethod
     def load_from_json() -> "Config":
-        """Loads configuration from a JSON file and ensures all required fields are present."""
+        """
+        Loads configuration from JSON file and ensures all required fields are present.
 
-        # Get the directory of the current script
+        This method reads JSON file named `config.json` in same directory
+        as script, and validates that file contains necessary fields
+        for configuration. If file is missing or any required fields are
+        absent, appropriate exceptions are raised.
+
+        Returns:
+            Config: An immutable Config instance with values loaded from JSON file.
+
+        Raises:
+            FileNotFoundError: If `config.json` does not exist.
+            ValueError: If any required keys are missing from file.
+        """
+
+
+        # Get directory of current script
         CURRENT_DIR = Path(__file__).parent
 
-        # Construct the path to config.json
+        # Construct path to config.json
         CONFIG_PATH = CURRENT_DIR / "config.json"
 
         if not CONFIG_PATH.exists():

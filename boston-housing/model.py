@@ -1,15 +1,15 @@
 # Third-party imports
-from keras.api.models import Model  # Model class
-from keras.api.layers import Input, Dense  # Layers for building the model
-from keras.api.optimizers import Adam, SGD  # Optimizers for training
-from keras.api.losses import MeanSquaredError  # Loss function for regression
+from keras.api.models import Model # Model class
+from keras.api.layers import Input, Dense # Layers for building model
+from keras.api.optimizers import Adam, SGD # Optimizers for training
+from keras.api.losses import MeanSquaredError # Loss function for regression
 from keras.api.regularizers import l2 # Regularization for overfitting
 
 
-# Function to create a regression model
+# Function to create model
 def build_model(model_number: int) -> Model:
     """
-    Returns a compiled regression model based on the specified model number.
+    Returns compiled model based on specified model number.
 
     Parameters:
     - model_number (int): Model variant to create (1 to 5).
@@ -17,6 +17,7 @@ def build_model(model_number: int) -> Model:
     Returns:
     - Compiled model and description (if any).
     """
+
 
     print("\n🎯 Build Model 🎯\n")
 
@@ -131,6 +132,7 @@ def build_model(model_number: int) -> Model:
     model.summary()
 
     return model, description
+
 
 # Print confirmation message
 print("\n✅ model.py successfully executed")
