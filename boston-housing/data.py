@@ -1,8 +1,8 @@
 # Third-party imports
-import numpy as np # Efficient array operations
-import pandas as pd # Data structures for handling structured data
-import tensorflow as tf # Core machine learning framework
-from sklearn.preprocessing import MinMaxScaler # Scales data to range [0, 1]
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.preprocessing import MinMaxScaler
 
 
 # Function to load dataset

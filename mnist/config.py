@@ -1,7 +1,7 @@
 # Standard imports
-import json # JSON file handling
-from pathlib import Path # Path operations
-from dataclasses import dataclass # Immutable data structures
+import json
+from pathlib import Path
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True) # This makes dataclass immutable
@@ -75,4 +75,4 @@ class Config:
 CONFIG = Config.load_from_json()
 
 # Print confirmation message
-print("\n✅ config.py successfully executed\n")
+print("\n✅ config.py successfully executed")

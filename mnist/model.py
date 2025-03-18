@@ -1,8 +1,8 @@
 # Third-party imports
-from keras.api.models import Model # Model class
-from keras.api.layers import Input, Dense # Layers for building model
-from keras.api.optimizers import Adam # Optimizers for training
-from keras.api.losses import CategoricalCrossentropy # Loss function for compilation
+from keras.api.models import Model
+from keras.api.layers import Input, Dense
+from keras.api.optimizers import Adam
+from keras.api.losses import CategoricalCrossentropy
 
 
 # Function to create model

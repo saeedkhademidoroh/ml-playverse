@@ -1,8 +1,8 @@
 # Third-party imports
-import matplotlib.pyplot as plt # Plotting and data visualization
+import matplotlib.pyplot as plt
 
 # Project-specific imports
-from config import CONFIG # Load configuration settings
+from config import CONFIG
 
 
 # Function to evaluate model (actual vs. predicted)
@@ -56,7 +56,7 @@ def evaluate_model(model, train_data, train_labels, test_data, test_labels):
 
 
 # Function to calculate accuracy of model
-def calculate_model_accuracy(model, test_data, test_labels):
+def calculate_model_accuracy(model, test_data, test_labels, verbose=0):
     """
     Calculates accuracy of model by comparing predictions with actual values.
 
@@ -75,7 +75,7 @@ def calculate_model_accuracy(model, test_data, test_labels):
     print("\n🎯 Calculate Model Accuracy 🎯")
 
     # Predict values
-    model_predictions = model.predict(test_data)
+    model_predictions = model.predict(test_data, verbose=verbose)
 
     # Initialize error counter
     error_count = 0

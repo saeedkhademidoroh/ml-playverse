@@ -1,7 +1,7 @@
 # Third-party imports
-import numpy as np # Efficient array operations
-import tensorflow as tf # Core machine learning framework
-from keras.api.utils import to_categorical # One-hot encoding
+import numpy as np
+import tensorflow as tf
+from keras.api.utils import to_categorical
 
 # Function to load dataset
 def load_dataset():
@@ -74,14 +74,12 @@ def analyze_dataset(train_data, train_labels, test_data, test_labels):
     mean_std = np.mean(std_values)
 
     # Summary Statistics
-    print("\n🔹 Statistical Summary:\n")
-    print(f"Shape (Height x Width): {train_data.shape[1:]}")
-    print(f"Pixel Values:")
-    print(f"    Range: {train_data.min()} to {train_data.max()}")
-    print(f"    Mean-Min: {mean_min}")
-    print(f"    Mean-Max: {mean_max}")
-    print(f"    Mean-Mean: {mean_mean}")
-    print(f"    Mean-Std: {mean_std}")
+    print("\n🔹 Statistical Summary (Pixel Values):\n")
+    print(f"Extreme-Range: {train_data.min()} to {train_data.max()}")
+    print(f"Mean-Min: {mean_min}")
+    print(f"Mean-Max: {mean_max}")
+    print(f"Mean-Mean: {mean_mean}")
+    print(f"Mean-Std: {mean_std}")
 
 
 # Function to preprocess dataset (normalization, reshaping, etc.)
@@ -105,7 +103,7 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
 
 
     # Print header for function
-    print("\n🎯 Preprocessing Steps 🎯")
+    print("\n🎯 Preprocess Dataset 🎯")
 
     # Print data types before preprocessing
     print("\n🔹 Data Types Before Preprocessing:\n")

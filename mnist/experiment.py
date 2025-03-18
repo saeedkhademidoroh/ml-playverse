@@ -1,27 +1,25 @@
 # Standard imports
-import sys # System-specific parameters and functions
-import os # File and directory operations
-import datetime # Date and time utilities
-from pathlib import Path # Path handling
+import sys
+import os
+import datetime
+from pathlib import Path
 
 # Third-party imports
-import numpy as np # Numerical computing
-import pandas as pd # Data manipulation
+import numpy as np
+import pandas as pd
 
 # Project-specific imports
-from config import CONFIG # Configuration settings
-from data import load_dataset, preprocess_dataset # Data loading and preprocessing
-from evaluate import calculate_model_accuracy # Model evaluation
-from model import build_model # Model building
-from train import train_model # Model training
+from config import CONFIG
+from data import load_dataset, analyze_dataset, preprocess_dataset
+from evaluate import evaluate_model
+from model import build_model
+from train import train_model
 
 
 # Function to add experiment results to csv and xlsx files
 def add_experiment_result(
     model,
-    history,
-    accuracy,
-    error_count,
+    evaluation_result,
     description=None
 ):
     """
@@ -62,22 +60,22 @@ def add_experiment_result(
     # Extract optimizer details
     optimizer = type(model.optimizer).__name__
 
-    # Extract evaluation metrics
-    min_loss = min(history.history["loss"])
-    final_loss = history.history["loss"][-1]
-    val_loss = history.history.get("val_loss", [None])[-1]
+    # Extract training metrics
+    min_val_loss = evaluation_result["min_val_loss"]
+    max_val_acc = evaluation_result["max_val_acc"]
+    final_test_loss = evaluation_result["final_test_loss"]
+    final_test_accuracy = evaluation_result["final_test_accuracy"]
 
     # Create dictionary of extracted data
     row_data = {
         "#": name,
         "Time": time,
-        "L-Count": layers_count,
-        "O-Type": optimizer,
-        "M-Loss": int(min_loss),
-        "F-Loss": int(final_loss),
-        "V-Loss": int(val_loss),
-        "E-Count": error_count,
-        "Accuracy": int(accuracy * 100),
+        "Layers-Count": layers_count,
+        "Optimizer": optimizer,
+        "Min-Val-Loss": min_val_loss,
+        "Max-Val-Acc": max_val_acc,
+        "Fin-Test-Loss": final_test_loss,
+        "Fin-Test-Acc": final_test_accuracy,
     }
 
     # Print values being logged
@@ -153,7 +151,7 @@ def add_experiment_result(
     experiment_results.to_csv(CSV_PATH, index=False)
 
 # Function to run experiments for specified models
-def run_experiment(model_numbers, runs=1, replace=False):
+def run_experiment(model_numbers, runs=1, replace=True):
     """
     Trains and evaluates models based on specified configurations.
 
@@ -205,21 +203,33 @@ def run_experiment(model_numbers, runs=1, replace=False):
         elif isinstance(model_numbers, tuple) and len(model_numbers) == 2:
             model_numbers = list(range(model_numbers[0], model_numbers[1] + 1)) # Create range
 
+        # Load dataset
+        (train_data, train_labels), (test_data, test_labels) = load_dataset()
+
+        # Analyze dataset before preprocessing
+        analyze_dataset(train_data, train_labels, test_data, test_labels)
+
+        # Preprocess dataset
+        train_data, train_labels, test_data, test_labels, val_data, val_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
+
+        # Analyze dataset after preprocessing
+        analyze_dataset(train_data, train_labels, test_data, test_labels)
+
         for model_number in model_numbers:
             for run in range(1, runs + 1):
                 print(f"\n🚀 Launching m{model_number} ({run}/{runs}) ...")
 
-                # Load and preprocess dataset
-                (train_data, train_labels), (test_data, test_labels) = load_dataset()
-                train_data, train_labels, test_data, test_labels, val_data, val_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
-
-                # Build and train model
+                # Build model
                 model, description = build_model(model_number)
+
+                # Train model
                 model, history = train_model(train_data, train_labels, val_data, val_labels, model)
 
-                # Evaluate and log results
-                error_count, accuracy = calculate_model_accuracy(model, test_data, test_labels)
-                add_experiment_result(model, history, accuracy, error_count, description)
+                # Evaluate model
+                evaluation_result = evaluate_model(model, history, test_data, test_labels)
+
+                # Add experiment result
+                add_experiment_result(model, evaluation_result, description)
 
         # Restore stdout and stderr to terminal
         sys.stdout = sys.__stdout__

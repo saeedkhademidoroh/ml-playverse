@@ -1,18 +1,18 @@
 # Standard imports
-import sys # System-specific parameters and functions
-import os # File and directory operations
-import datetime # Date and time utilities
-from pathlib import Path # Path handling
+import sys
+import os
+import datetime
+from pathlib import Path
 
 # Third-party imports
-import numpy as np # Numerical computing
-import pandas as pd # Data manipulation
+import numpy as np
+import pandas as pd
 
 # Project-specific imports
-from data import load_dataset, analyze_dataset, preprocess_dataset # Data loading and preprocessing
-from evaluate import calculate_model_accuracy # Model evaluation
-from model import build_model # Model building
-from train import train_model # Model training
+from data import load_dataset, analyze_dataset, preprocess_dataset
+from evaluate import calculate_model_accuracy
+from model import build_model
+from train import train_model
 
 
 # Function to add experiment results to csv and xlsx files
@@ -50,21 +50,19 @@ def add_experiment_result(
     optimizer = type(model.optimizer).__name__
 
     # Extract evaluation metrics
-    min_loss = min(history.history["loss"])
-    final_loss = history.history["loss"][-1]
-    val_loss = history.history.get("val_loss", [None])[-1]
+    final_train_loss = history.history["loss"][-1]
+    final_val_loss = history.history.get("val_loss", [None])[-1]
 
     # Create dictionary of extracted data
     row_data = {
         "#": name,
         "Time": time,
-        "L-Count": layers_count,
-        "O-Type": optimizer,
-        "M-Loss": int(min_loss),
-        "F-Loss": int(final_loss),
-        "V-Loss": int(val_loss),
-        "E-Count": error_count,
+        "Layers Count": layers_count,
+        "Optimizer": optimizer,
+        "Error Count": error_count,
         "Accuracy": int(accuracy * 100),
+        "Fin-T-Loss": int(final_train_loss),
+        "Fin-V-Loss": int(final_val_loss),
     }
 
     # Print values being logged
@@ -140,7 +138,7 @@ def add_experiment_result(
     experiment_results.to_csv(CSV_PATH, index=False)
 
 # Function to run experiments for specified models
-def run_experiment(model_numbers, runs=1, replace=False):
+def run_experiment(model_numbers, runs=1, replace=True):
     """
     Executes training and evaluation for specified models and logs results to CSV and XLSX files.
 

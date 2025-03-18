@@ -1,6 +1,7 @@
 # Third-party imports
-import pandas as pd # Data manipulation with pandas
-import matplotlib.pyplot as plt # Plotting library
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Function to visualize dataset
 def visualize_dataset(train_data, train_labels, test_data, test_labels, num_samples=20):
@@ -32,71 +33,147 @@ def visualize_dataset(train_data, train_labels, test_data, test_labels, num_samp
     # Ensure num_samples does not exceed dataset size
     num_samples = min(num_samples, len(train_data), len(test_data))
 
-    if train_data.ndim == 2:
-        # Tabular Dataset (e.g., Boston Housing)
-        print("\n🔹 Train Data Sample:\n", pd.DataFrame(train_data[:num_samples]))
-        print("\n🔹 Test Data Sample:\n", pd.DataFrame(test_data[:num_samples]))
-        print("\n🔹 Train Labels Sample:\n", train_labels[:num_samples])
-        print("\n🔹 Test Labels Sample:\n", test_labels[:num_samples])
+    fig, axes = plt.subplots(2, num_samples // 2, figsize=(15, 5))
+    axes = axes.flatten()
 
-    elif train_data.ndim == 3:
-        # Image Dataset (e.g., MNIST)
-        fig, axes = plt.subplots(2, num_samples // 2, figsize=(15, 5))
-        axes = axes.flatten()
+    for i in range(num_samples):
+        axes[i].imshow(train_data[i], cmap="gray")
+        axes[i].set_title(f"Label: {train_labels[i]}")
+        axes[i].axis("off")
 
-        for i in range(num_samples):
-            axes[i].imshow(train_data[i], cmap="gray")
-            axes[i].set_title(f"Label: {train_labels[i]}")
-            axes[i].axis("off")
+    plt.suptitle("Sample Images from Training Set\n")
+    plt.show()
 
-        plt.suptitle("Sample Images from Training Set\n")
-        plt.show()
-
-        print("\n🔹 Train Labels Sample:\n", train_labels[:num_samples])
-        print("\n🔹 Test Labels Sample:\n", test_labels[:num_samples])
-
-    else:
-        print("⚠️ Unsupported data shape. Only 2D (tabular) and 3D (image) datasets are supported.")
+    print("\n🔹 Train Labels Sample:\n\n", train_labels[:num_samples])
+    print("\n🔹 Test Labels Sample:\n\n", test_labels[:num_samples])
 
 
 # Function to visualize model training history
 def visualize_history(history):
     """
-    Plots training and validation metrics of Keras model.
+    Plots training and validation metrics of a Keras model.
 
     Displays:
     - Training loss vs. Validation loss across epochs.
+    - Training accuracy vs. Validation accuracy across epochs (if available).
+    - Annotates min loss and max accuracy in the plot.
 
     Parameters:
         history (tf.keras.callbacks.History): The History object from model.fit().
 
     Notes:
-        - The history dictionary keys are renamed for better readability.
-        - A line plot is generated for visual comparison.
+        - Only plots accuracy if "accuracy" and "val_accuracy" exist in history.
+        - Loss and accuracy are displayed in separate subplots for clarity.
+        - Prints min/max metrics to the terminal.
     """
 
-
     # Print header for function
-    print("\n🎯 Visualize History 🎯")
+    print("\n🎯 Visualize Training History 🎯")
 
     # Convert history.history dictionary to DataFrame
     history_df = pd.DataFrame(history.history)
 
-    # Rename columns for better readability
-    history_df.rename(columns={
-        'loss': 'Training Loss',
-        'val_loss': 'Validation Loss'
-    }, inplace=True)
+    # Create subplots
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-    # Plot DataFrame
-    history_df.plot(figsize=(10, 6))
-    plt.title('Model Training History')
-    plt.xlabel('Epoch')
-    plt.ylabel('Metric')
-    plt.grid(True)
+    # ----------- Loss Plot -----------
+    loss_col = 'loss'
+    val_loss_col = 'val_loss'
 
-    # Display plot
+    # Find min loss values
+    min_loss_idx = history_df[loss_col].idxmin()
+    min_val_loss_idx = history_df[val_loss_col].idxmin()
+
+    min_loss = history_df[loss_col][min_loss_idx]
+    min_val_loss = history_df[val_loss_col][min_val_loss_idx]
+
+    # Plot loss
+    history_df[[loss_col, val_loss_col]].rename(columns={
+        loss_col: 'Training Loss',
+        val_loss_col: 'Validation Loss'
+    }).plot(ax=axes[0])
+    axes[0].set_title("Loss Over Epochs")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("Loss")
+    axes[0].grid(True)
+
+    # Add markers for min loss
+    axes[0].scatter(min_loss_idx, min_loss, color="red", label=f"Min Loss: {min_loss:.4f}")
+    axes[0].scatter(min_val_loss_idx, min_val_loss, color="blue", label=f"Min Val Loss: {min_val_loss:.4f}")
+    axes[0].legend()
+
+    # ----------- LAccuracy Plot -----------
+    acc_col = "accuracy"
+    val_acc_col = "val_accuracy"
+
+    # Find max accuracy values
+    max_acc_idx = history_df[acc_col].idxmax()
+    max_val_acc_idx = history_df[val_acc_col].idxmax()
+
+    max_acc = history_df[acc_col][max_acc_idx]
+    max_val_acc = history_df[val_acc_col][max_val_acc_idx]
+
+    # Plot accuracy
+    history_df[[acc_col, val_acc_col]].rename(columns={
+        acc_col: 'Training Accuracy',
+        val_acc_col: 'Validation Accuracy'
+    }).plot(ax=axes[1])
+    axes[1].set_title("Accuracy Over Epochs")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("Accuracy")
+    axes[1].grid(True)
+
+    # Add markers for max accuracy
+    axes[1].scatter(max_acc_idx, max_acc, color="red", label=f"Max Acc: {max_acc:.4f}")
+    axes[1].scatter(max_val_acc_idx, max_val_acc, color="blue", label=f"Max Val Acc: {max_val_acc:.4f}")
+    axes[1].legend()
+
+    # Adjust layout and show plot
+    plt.tight_layout()
     plt.show()
+
+def visualize_predictions(test_data, test_labels, predictions, num_samples=20):
+    """
+    Plots test images with their true and predicted labels.
+
+    Parameters:
+        test_data (numpy.ndarray): Test images (MNIST: 28x28 grayscale).
+        test_labels (numpy.ndarray): True labels.
+        predictions (numpy.ndarray): Model's predicted probabilities.
+        num_samples (int): Number of samples to display.
+    """
+
+
+    # Print header for function
+    print("\n🎯 Visualize Predictions 🎯")
+
+    # Select random indices for visualization
+    sample_indices = np.random.choice(len(test_labels), num_samples, replace=False)
+    sample_images = test_data[sample_indices]
+    sample_labels = test_labels[sample_indices]
+    sample_preds = np.argmax(predictions[sample_indices], axis=1)
+
+    # Determine grid size (1 row if ≤5, else multiple rows)
+    cols = min(num_samples, 5)  # Max 5 per row
+    rows = (num_samples + cols - 1) // cols  # Calculate needed rows
+
+    # Create subplots with dynamic grid size
+    fig, axes = plt.subplots(rows, cols, figsize=(cols * 2, rows * 2))
+    axes = np.array(axes).flatten()  # Flatten in case of 1 row
+
+    # Plot each sample
+    for i in range(num_samples):
+        axes[i].imshow(sample_images[i].reshape(28, 28), cmap="gray")
+        axes[i].set_title(f"Pred: {sample_preds[i]} | True: {sample_labels[i]}", fontsize=10)
+        axes[i].axis("off")
+
+    # Hide any unused subplots (for non-exact grids)
+    for j in range(num_samples, len(axes)):
+        axes[j].axis("off")
+
+    plt.tight_layout()
+    plt.show()
+
 
 # Print confirmation message
 print("\n✅ visualize.py successfully executed")

@@ -1,9 +1,9 @@
 # Third-party imports
-from keras.api.models import Model # Model class
-from keras.api.layers import Input, Dense # Layers for building model
-from keras.api.optimizers import Adam, SGD # Optimizers for training
-from keras.api.losses import MeanSquaredError # Loss function for regression
-from keras.api.regularizers import l2 # Regularization for overfitting
+from keras.api.models import Model
+from keras.api.layers import Input, Dense
+from keras.api.optimizers import Adam, SGD
+from keras.api.losses import MeanSquaredError
+from keras.api.regularizers import l2
 
 
 # Function to create model

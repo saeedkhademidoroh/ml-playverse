@@ -1,7 +1,7 @@
 # Third-party imports
-import pandas as pd # Data manipulation with pandas
-import matplotlib.pyplot as plt # Plotting library
-import seaborn as sns # Enhanced data visualization based on matplotlib
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 # Function to visualize dataset (plotting)

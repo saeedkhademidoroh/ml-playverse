@@ -1,116 +1,104 @@
 # Third-party imports
-import matplotlib.pyplot as plt # Plotting and data visualization
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Project-specific imports
-from config import CONFIG # Load configuration settings
+from config import CONFIG
 
 
-# Function to evaluate model (actual vs. predicted)
-def evaluate_model(model, train_data, train_labels, test_data, test_labels):
+# Function to extract min/max loss & accuracy from history
+def extract_history_metrics(history):
     """
-    Visualizes actual vs. predicted values for both training and test datasets.
-
-    This function generates side-by-side plots comparing true and predicted
-    values for training and test datasets, which helps in evaluating how
-    well model is performing.
+    Extracts min/max loss and accuracy from training history.
 
     Parameters:
-        model (tf.keras.Model): A trained model that has `predict()` method.
-        train_data (numpy.ndarray): Feature set for training data.
-        train_labels (numpy.ndarray): True labels for training data.
-        test_data (numpy.ndarray): Feature set for test data.
-        test_labels (numpy.ndarray): True labels for test data.
+        history (tf.keras.callbacks.History or dict): The training history.
 
     Returns:
-        None: This function does not return any values; it displays plots directly.
+        dict: Contains min/max loss & accuracy with their corresponding epochs.
     """
 
 
     # Print header for function
-    print("\n🎯 Evaluate Model 🎯\n")
-
-    # Predict values
-    train_preds = model.predict(train_data)
-    test_preds = model.predict(test_data)
-
-    # Number of samples to visualize
-    num_samples = min(30, len(train_labels), len(test_labels))
-
-    # Plot setup
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-    # Plot train data
-    axes[0].plot(train_labels[:num_samples], "r-", label="True", alpha=0.7)
-    axes[0].plot(train_preds[:num_samples], "b-", label="Predicted", alpha=0.7)
-    axes[0].set_title("Train Data: Actual vs. Predicted")
-    axes[0].set_xlabel("Sample Index")
-    axes[0].set_ylabel("Value")
-    axes[0].legend()
-    axes[0].grid(True, linestyle="--", alpha=0.6)
-
-    # Plot test data
-    axes[1].plot(test_labels[:num_samples], "r-", label="True", alpha=0.7)
-    axes[1].plot(test_preds[:num_samples], "b-", label="Predicted", alpha=0.7)
-    axes[1].set_title("Test Data: Actual vs. Predicted")
-    axes[1].set_xlabel("Sample Index")
-    axes[1].set_ylabel("Value")
-    axes[1].legend()
-    axes[1].grid(True, linestyle="--", alpha=0.6)
-
-    # Display plots
-    plt.tight_layout()
-    plt.show()
+    print("\n🎯 Extract History 🎯")
 
 
-# Function to calculate accuracy of model
-def calculate_model_accuracy(model, test_data, test_labels):
+    # Ensure history is a dictionary
+    history = history.history if hasattr(history, "history") else history
+
+    # Extract min/max values and corresponding epochs
+    metrics = {
+        "min_train_loss": min(history["loss"]),
+        "min_train_loss_epoch": history["loss"].index(min(history["loss"])) + 1,
+        "max_train_acc": max(history["accuracy"]),
+        "max_train_acc_epoch": history["accuracy"].index(max(history["accuracy"])) + 1,
+    }
+
+    # Check for validation data (optional)
+    if "val_loss" in history and "val_accuracy" in history:
+        metrics.update({
+            "min_val_loss": min(history["val_loss"]),
+            "min_val_loss_epoch": history["val_loss"].index(min(history["val_loss"])) + 1,
+            "max_val_acc": max(history["val_accuracy"]),
+            "max_val_acc_epoch": history["val_accuracy"].index(max(history["val_accuracy"])) + 1,
+        })
+    else:
+        metrics["min_val_loss"], metrics["max_val_acc"] = None, None
+
+    return metrics
+
+
+# Function to evaluate model
+def evaluate_model(model, history, test_data, test_labels, verbose=0):
     """
-    Calculates accuracy of model by comparing predictions with actual values.
-
-    This function computes accuracy of model based on number of
-    errors (absolute difference between predicted and true values) exceeding
-    given threshold. The accuracy is then calculated as proportion of
-    correct predictions.
+    Evaluates the model on test data, extracts training history, and displays key metrics.
 
     Parameters:
-        model (tf.keras.Model): A trained model that has `predict()` method.
+        model (tf.keras.Model): A trained model.
+        history (tf.keras.callbacks.History or dict): Training history.
         test_data (numpy.ndarray): Feature set for test data.
         test_labels (numpy.ndarray): True labels for test data.
+        verbose (int): Verbosity level for model evaluation (default: 1).
 
     Returns:
-        tuple:
-            - error_count (int): The number of predictions with errors exceeding threshold.
-            - accuracy (float): The proportion of correct predictions, calculated as (1 - error_count / total predictions).
+        dict: Contains min/max loss, accuracy, test loss, test accuracy, and predictions.
     """
 
+    print("\n🎯 Evaluate Model 🎯")
 
-    # Print header for function
-    print("\n🎯 Calculate Model Accuracy 🎯")
+    # Extract metrics from history
+    metrics = extract_history_metrics(history)
+
+    # Print training history details
+    print("\n🔹 Training History:\n")
+    print(f"Min Training Loss: {metrics['min_train_loss']:.4f} (Epoch {metrics['min_train_loss_epoch']})")
+    print(f"Max Training Accuracy: {metrics['max_train_acc']:.4f} (Epoch {metrics['max_train_acc_epoch']})")
+
+    if metrics["min_val_loss"] is not None:
+        print(f"Min Validation Loss: {metrics['min_val_loss']:.4f} (Epoch {metrics['min_val_loss_epoch']})")
+        print(f"Max Validation Accuracy: {metrics['max_val_acc']:.4f} (Epoch {metrics['max_val_acc_epoch']})")
+
+    # Evaluate model
+    final_test_loss, final_test_accuracy = model.evaluate(test_data, test_labels, batch_size=CONFIG.BATCH_SIZE, verbose=verbose)
+
+    # Print evaluation results
+    print("\n🔹 Evaluation Result:\n")
+    print(f"Final Test Loss: {final_test_loss:.4f}")
+    print(f"Final Test Accuracy: {final_test_accuracy:.4f}")
 
     # Predict values
-    model_predictions = model.predict(test_data)
+    predictions = model.predict(test_data, verbose=verbose)
 
-    # Initialize error counter
-    error_count = 0
-
-    # Iterate over predictions and compare with actual values
-    print(f"\n🔹 Model errors above {CONFIG.THRESHOLD} (threshold):\n")
-    for index in range(len(model_predictions)):
-        if abs(model_predictions[index] - (test_labels[index])) > CONFIG.THRESHOLD:
-            print(f"Prediction: {model_predictions[index]}, Actual: {test_labels[index]}")
-            error_count += 1
-
-    # Calculate accuracy
-    accuracy = 1.0 - (error_count / len(model_predictions))
-
-    # Print summary
-    print("\n🔹 Model Accuracy Summary:\n")
-    print(f"Number of errors: {error_count}")
-    print(f"Accuracy: {accuracy:.2f}")
-
-    # Return accuracy and number of errors
-    return(error_count, accuracy)
-
+    # Return metrics for logging or further analysis
+    return {
+        "min_train_loss": metrics["min_train_loss"],
+        "max_train_acc": metrics["max_train_acc"],
+        "min_val_loss": metrics.get("min_val_loss"),
+        "max_val_acc": metrics.get("max_val_acc"),
+        "final_test_loss": final_test_loss,
+        "final_test_accuracy": final_test_accuracy,
+        "predictions": predictions,
+    }
 
 # Print confirmation message
 print("\n✅ evaluate.py successfully executed")
