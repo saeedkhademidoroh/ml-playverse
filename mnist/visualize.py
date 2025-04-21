@@ -102,7 +102,7 @@ def visualize_history(history):
     axes[0].scatter(min_val_loss_idx, min_val_loss, color="blue", label=f"Min Val Loss: {min_val_loss:.4f}")
     axes[0].legend()
 
-    # ----------- LAccuracy Plot -----------
+    # ----------- Accuracy Plot -----------
     acc_col = "accuracy"
     val_acc_col = "val_accuracy"
 
