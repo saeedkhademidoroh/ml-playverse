@@ -1,6 +1,8 @@
 # Third-party imports
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow as tf
+from keras.api.models import load_model
 
 # Project-specific imports
 from config import CONFIG
@@ -49,7 +51,7 @@ def extract_history_metrics(history):
 
 
 # Function to evaluate model
-def evaluate_model(model, history, test_data, test_labels, verbose=0):
+def evaluate_model(test_data, test_labels, verbose=0):
     """
     Evaluates the model on test data, extracts training history, and displays key metrics.
 
@@ -66,39 +68,30 @@ def evaluate_model(model, history, test_data, test_labels, verbose=0):
 
     print("\n🎯 Evaluate Model 🎯")
 
-    # Extract metrics from history
-    metrics = extract_history_metrics(history)
+    # Load trained model
+    model = load_model(CONFIG.MODEL_PATH)
 
-    # Print training history details
-    print("\n🔹 Training History:\n")
-    print(f"Min Training Loss: {metrics['min_train_loss']:.4f} (Epoch {metrics['min_train_loss_epoch']})")
-    print(f"Max Training Accuracy: {metrics['max_train_acc']:.4f} (Epoch {metrics['max_train_acc_epoch']})")
-
-    if metrics["min_val_loss"] is not None:
-        print(f"Min Validation Loss: {metrics['min_val_loss']:.4f} (Epoch {metrics['min_val_loss_epoch']})")
-        print(f"Max Validation Accuracy: {metrics['max_val_acc']:.4f} (Epoch {metrics['max_val_acc_epoch']})")
-
-    # Evaluate model
-    final_test_loss, final_test_accuracy = model.evaluate(test_data, test_labels, batch_size=CONFIG.BATCH_SIZE, verbose=verbose)
+    # Evaluate trained model
+    evaluation = model.evaluate(test_data, test_labels, verbose=verbose)
 
     # Print evaluation results
     print("\n🔹 Evaluation Result:\n")
-    print(f"Final Test Loss: {final_test_loss:.4f}")
-    print(f"Final Test Accuracy: {final_test_accuracy:.4f}")
+    print(evaluation)
 
-    # Predict values
-    predictions = model.predict(test_data, verbose=verbose)
+    # Use trained model for predictions
+    predictions = model.predict(test_data)
 
-    # Return metrics for logging or further analysis
+    # Print predictions
+    print("\n🔹 Predictions:\n")
+    for i in range(5):
+        print(f"Sample {i + 1}:")
+        print(f"Predicted: {np.argmax(predictions[i])}, True: {test_labels[i]}")
+
     return {
-        "min_train_loss": metrics["min_train_loss"],
-        "max_train_acc": metrics["max_train_acc"],
-        "min_val_loss": metrics.get("min_val_loss"),
-        "max_val_acc": metrics.get("max_val_acc"),
-        "final_test_loss": final_test_loss,
-        "final_test_accuracy": final_test_accuracy,
+        "evaluation": evaluation,
         "predictions": predictions,
     }
+
 
 # Print confirmation message
 print("\n✅ evaluate.py successfully executed")

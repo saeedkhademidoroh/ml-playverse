@@ -24,10 +24,10 @@ def build_model(model_number: int) -> Model:
     # Select model architecture and compile it
     if model_number == 1:
         input_layer = Input(shape=(784,))
-        first_layer = Dense(units=512, activation="relu")(input_layer)
-        second_layer = Dense(units=256, activation="relu")(first_layer)
-        third_layer = Dense(units=128, activation="relu")(second_layer)
-        output_layer = Dense(units=10, activation="softmax")(third_layer)
+        x = Dense(units=512, activation="relu")(input_layer)
+        x = Dense(units=256, activation="relu")(x)
+        x = Dense(units=128, activation="relu")(x)
+        output_layer = Dense(units=10, activation="softmax")(x)
         model = Model(inputs=input_layer, outputs=output_layer, name="m1")
         model.compile(optimizer=Adam(), loss=CategoricalCrossentropy(), metrics=["accuracy"])
         description = None

@@ -21,10 +21,11 @@ class Config:
             Ensures all required fields are present in file.
     """
 
-
+    SAVE_BEST_ONLY: bool
     BATCH_SIZE: int
     EPOCHS: int
-    PATIENCE: int
+    VALIDATION_SPLIT: float
+    MODEL_PATH: str
 
     @staticmethod
     def load_from_json() -> "Config":
@@ -58,16 +59,24 @@ class Config:
             config_data = json.load(file)
 
         # Required keys
-        required_keys = ["BATCH_SIZE", "EPOCHS", "PATIENCE"]
+        required_keys = [
+            "SAVE_BEST_ONLY",
+            "BATCH_SIZE",
+            "EPOCHS",
+            "VALIDATION_SPLIT",
+            "MODEL_PATH",
+        ]
         missing_keys = [key for key in required_keys if key not in config_data]
 
         if missing_keys:
             raise ValueError(f"Missing required config keys: {missing_keys}")
 
         return Config(
+            SAVE_BEST_ONLY=config_data["SAVE_BEST_ONLY"],
             BATCH_SIZE=config_data["BATCH_SIZE"],
             EPOCHS=config_data["EPOCHS"],
-            PATIENCE=config_data["PATIENCE"],
+            VALIDATION_SPLIT=config_data["VALIDATION_SPLIT"],
+            MODEL_PATH=config_data["MODEL_PATH"],
         )
 
 

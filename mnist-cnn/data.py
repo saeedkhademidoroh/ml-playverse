@@ -1,6 +1,7 @@
 # Third-party imports
 import numpy as np
 import tensorflow as tf
+from keras.api.datasets.mnist import load_data
 from keras.api.utils import to_categorical
 
 # Function to load dataset
@@ -13,7 +14,7 @@ def load_dataset():
     """
 
 
-    return tf.keras.datasets.mnist.load_data()
+    return load_data()
 
 
 # Function to analyze dataset (statistical analysis)
@@ -119,21 +120,17 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Train Labels Shape:", train_labels.shape)
     print("Test Labels Shape:", test_labels.shape)
 
-    # Reshape data to ensure compatibility
-    train_data = np.reshape(train_data, (-1, 28 * 28))
-    test_data = np.reshape(test_data, (-1, 28 * 28))
+    # Reshape data to ensure compatibility (num_samples, height, width, channels)
+    train_data = np.reshape(train_data, (-1, 28, 28, 1))
+    test_data = np.reshape(test_data, (-1, 28, 28, 1))
 
     # Normalize data with dividing by 255 and convert to float32
     train_data = (train_data / 255.0).astype(np.float32)
     test_data = (test_data / 255.0).astype(np.float32)
 
-    # Convert labels to one-hot encoding
-    train_labels = to_categorical(train_labels)
-    test_labels = to_categorical(test_labels)
-
-    # Split data into training and validation sets
-    train_data, val_data = train_data[:30000], train_data[30000:40000]
-    train_labels, val_labels = train_labels[:30000], train_labels[30000:40000]
+    # Convert labels to one-hot encoding to 10 classes
+    train_labels = to_categorical(train_labels, num_classes=10)
+    test_labels = to_categorical(test_labels, num_classes=10)
 
     # Print data types after preprocessing
     print("\n🔹 Data Types After Preprocessing:\n")
@@ -149,7 +146,7 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     print("Train Labels Shape:", train_labels.shape)
     print("Test Labels Shape:", test_labels.shape)
 
-    return train_data, train_labels, test_data, test_labels, val_data, val_labels
+    return train_data, train_labels, test_data, test_labels
 
 
 # Print confirmation message

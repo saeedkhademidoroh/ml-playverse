@@ -1,9 +1,15 @@
+# Standard library imports
+import os
+
+# Third-party imports
+from keras.api.callbacks import ModelCheckpoint
+
 # Project-specific imports
 from config import CONFIG
-from keras.api.callbacks import EarlyStopping
 
 
-def train_model(train_data, train_labels, test_data, test_labels, model, verbose=0):
+
+def train_model(train_data, train_labels, model, verbose=0):
     """
     Trains given model using provided training data and labels.
 
@@ -29,17 +35,17 @@ def train_model(train_data, train_labels, test_data, test_labels, model, verbose
     # Train model and store training history
     print("\n🎯 Train Model 🎯")
 
-    # Early stopping callback
-    early_stop = EarlyStopping(monitor="val_accuracy", patience=CONFIG.PATIENCE, restore_best_weights=True, mode="max", verbose=verbose)
+    # Model checkpoint callback
+    model_checkpoint = ModelCheckpoint(filepath=CONFIG.MODEL_PATH, save_best_only=CONFIG.SAVE_BEST_ONLY)
 
     history = model.fit(
         x=train_data,
         y=train_labels,
-        epochs=CONFIG.EPOCHS, # Taken from config.py
-        batch_size=CONFIG.BATCH_SIZE, # Taken from config.py
-        validation_data=(test_data, test_labels),
-        callbacks=[early_stop],
-        verbose=0,
+        epochs=CONFIG.EPOCHS,
+        batch_size=CONFIG.BATCH_SIZE,
+        validation_split=CONFIG.VALIDATION_SPLIT,
+        callbacks=[model_checkpoint],
+        verbose=verbose,
     )
 
     return model, history

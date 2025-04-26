@@ -210,7 +210,7 @@ def run_experiment(model_numbers, runs=1, replace=True):
         analyze_dataset(train_data, train_labels, test_data, test_labels)
 
         # Preprocess dataset
-        train_data, train_labels, test_data, test_labels, val_data, val_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
+        train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
 
         # Analyze dataset after preprocessing
         analyze_dataset(train_data, train_labels, test_data, test_labels)
@@ -223,7 +223,7 @@ def run_experiment(model_numbers, runs=1, replace=True):
                 model, description = build_model(model_number)
 
                 # Train model
-                model, history = train_model(train_data, train_labels, val_data, val_labels, model)
+                model, history = train_model(train_data, train_labels, model)
 
                 # Evaluate model
                 evaluation_result = evaluate_model(model, history, test_data, test_labels)

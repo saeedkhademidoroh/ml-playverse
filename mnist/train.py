@@ -35,11 +35,11 @@ def train_model(train_data, train_labels, test_data, test_labels, model, verbose
     history = model.fit(
         x=train_data,
         y=train_labels,
-        epochs=CONFIG.EPOCHS, # Taken from config.py
-        batch_size=CONFIG.BATCH_SIZE, # Taken from config.py
+        epochs=CONFIG.EPOCHS,
+        batch_size=CONFIG.BATCH_SIZE,
         validation_data=(test_data, test_labels),
         callbacks=[early_stop],
-        verbose=0,
+        verbose=verbose,
     )
 
     return model, history
