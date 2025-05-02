@@ -1,6 +1,6 @@
 from PIL import Image
 from pathlib import Path
-from loader import load_assets, BACKGROUND_PATH, FRAME_PATH, ARTWORK_PATH
+from mockup.load import load_assets, BACKGROUND_PATH, FRAME_PATH, ARTWORK_PATH
 
 EDGE_SLICE = 40  # Frame slice thickness in pixels
 CURRENT_DIR = Path(__file__).parent
