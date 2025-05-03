@@ -8,7 +8,7 @@ from experiment import run_experiment
 
 
 # Run Model 1, one time
-run_experiment((1, 9), replace=True)
+run_experiment((1, 9), runs=10, replace=True)
 
 # Run Model 1 to 5, each 5 times
 # run_experiment((1, 11), runs=5, replace=True)
