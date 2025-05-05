@@ -47,10 +47,10 @@ run_experiment((1, 9), runs=10, replace=True)
 # visualize_history(history)
 
 # Evaluate model
-# evaluation_result = evaluate_model(model, history, test_data, test_labels)
+# evaluation = evaluate_model(model, history, test_data, test_labels)
 
 # Visualize predictions
-# visualize_predictions(test_data, test_labels, evaluation_result["predictions"], num_samples=10)
+# visualize_predictions(test_data, test_labels, evaluation["predictions"], num_samples=10)
 
 # Print confirmation message
 print("\n✅ main.py successfully executed")

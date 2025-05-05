@@ -22,20 +22,21 @@ from visualize import visualize_dataset, visualize_history, visualize_prediction
 # Run specific models 1, 3, and 5, each 2 times
 # run_experiment([1, 3, 5], runs=2)
 
+
 # Load dataset
 (train_data, train_labels), (test_data, test_labels) = load_dataset()
 
 # Visualize dataset
-# visualize_dataset(train_data, train_labels, test_data, test_labels, num_samples=20)
+visualize_dataset(train_data, train_labels, test_data, test_labels, num_samples=20)
 
 # Analyze dataset before preprocessing
-# analyze_dataset(train_data, train_labels, test_data, test_labels)
+analyze_dataset(train_data, train_labels, test_data, test_labels)
 
 # Preprocess dataset
 train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
 
 # Analyze dataset after preprocessing
-# analyze_dataset(train_data, train_labels, test_data, test_labels)
+analyze_dataset(train_data, train_labels, test_data, test_labels)
 
 # Build model
 model, description = build_model(6)
@@ -44,13 +45,13 @@ model, description = build_model(6)
 model, history = train_model(train_data, train_labels, model, verbose=1)
 
 # Visualize history
-# visualize_history(history)
+visualize_history(history)
 
 # Evaluate model on original (unshifted) test data
 evaluation, predictions, shifted_evaluation, shifted_predictions = evaluate_model(test_data, test_labels, verbose=1)
 
 # Visualize predictions
-# visualize_predictions(test_data, test_labels, evaluation_result["predictions"], num_samples=10)
+visualize_predictions(test_data, test_labels, evaluation["predictions"], num_samples=10)
 
 # Print confirmation message
 print("\n✅ main.py successfully executed")
