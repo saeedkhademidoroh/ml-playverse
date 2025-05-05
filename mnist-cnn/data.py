@@ -149,5 +149,46 @@ def preprocess_dataset(train_data, train_labels, test_data, test_labels):
     return train_data, train_labels, test_data, test_labels
 
 
+# Function to generate test images with random directional shifts
+def generate_shifted_test_data(test_data, shift=6):
+    """
+    Generates a new test set by randomly shifting each image in one of four directions:
+    left, right, up, or down. Used for evaluating model robustness to positional variance.
+
+    Parameters:
+        test_data (np.ndarray): Test images of shape (N, 28, 28, 1).
+        shift (int): Total number of pixels to shift (default: 6).
+
+    Returns:
+        np.ndarray: Shifted test dataset with same shape as input.
+    """
+
+    shifted_test_data = []
+    si = shift
+    sih = si // 2
+
+    for image in test_data:
+        shifted_image = np.zeros((28, 28, 1))
+        choice_rand = np.random.rand()
+
+        if choice_rand < 0.25:
+            # Shift left
+            shifted_image[:, :-si, :] = image[:, sih:-sih, :]
+        elif choice_rand < 0.5:
+            # Shift right
+            shifted_image[:, si:, :] = image[:, sih:-sih, :]
+        elif choice_rand < 0.75:
+            # Shift up
+            shifted_image[:-si, :, :] = image[sih:-sih, :, :]
+        else:
+            # Shift down
+            shifted_image[si:, :, :] = image[sih:-sih, :, :]
+
+        shifted_test_data.append(shifted_image)
+
+    return np.array(shifted_test_data)
+
+
+
 # Print confirmation message
 print("\n✅ data.py successfully executed")

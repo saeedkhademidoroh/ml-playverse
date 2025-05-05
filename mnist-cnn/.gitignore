@@ -6,3 +6,6 @@ experiment_results.xlsx
 
 # Python cache files
 __pycache__
+
+# Trained model files
+trained_model.h5

@@ -2,6 +2,5 @@
     "SAVE_BEST_ONLY": true,
     "BATCH_SIZE": 32,
     "EPOCHS": 1,
-    "VALIDATION_SPLIT": 0.2,
-    "MODEL_PATH": "/home/saeed/projects/ml/src/mr-engineer-playverse/mnist-cnn/trained_model.h5"
+    "VALIDATION_SPLIT": 0.2
 }

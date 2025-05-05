@@ -1,12 +1,12 @@
 # Standard library imports
 import os
+from pathlib import Path
 
 # Third-party imports
 from keras.api.callbacks import ModelCheckpoint
 
 # Project-specific imports
 from config import CONFIG
-
 
 
 def train_model(train_data, train_labels, model, verbose=0):
@@ -31,12 +31,17 @@ def train_model(train_data, train_labels, model, verbose=0):
             - history (tf.keras.callbacks.History): Training history containing loss and accuracy metrics.
     """
 
+    # Get directory of current script
+    CURRENT_DIR = Path(__file__).parent
+
+    # Construct path to file
+    model_path = CURRENT_DIR / "trained_model.h5"
 
     # Train model and store training history
     print("\n🎯 Train Model 🎯")
 
     # Model checkpoint callback
-    model_checkpoint = ModelCheckpoint(filepath=CONFIG.MODEL_PATH, save_best_only=CONFIG.SAVE_BEST_ONLY)
+    model_checkpoint = ModelCheckpoint(filepath=model_path, save_best_only=CONFIG.SAVE_BEST_ONLY)
 
     history = model.fit(
         x=train_data,

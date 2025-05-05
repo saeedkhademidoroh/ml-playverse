@@ -25,7 +25,6 @@ class Config:
     BATCH_SIZE: int
     EPOCHS: int
     VALIDATION_SPLIT: float
-    MODEL_PATH: str
 
     @staticmethod
     def load_from_json() -> "Config":
@@ -64,7 +63,6 @@ class Config:
             "BATCH_SIZE",
             "EPOCHS",
             "VALIDATION_SPLIT",
-            "MODEL_PATH",
         ]
         missing_keys = [key for key in required_keys if key not in config_data]
 
@@ -76,7 +74,6 @@ class Config:
             BATCH_SIZE=config_data["BATCH_SIZE"],
             EPOCHS=config_data["EPOCHS"],
             VALIDATION_SPLIT=config_data["VALIDATION_SPLIT"],
-            MODEL_PATH=config_data["MODEL_PATH"],
         )
 
 

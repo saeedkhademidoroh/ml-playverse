@@ -1,3 +1,6 @@
+# Standard imports
+from pathlib import Path
+
 # Third-party imports
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,6 +9,8 @@ from keras.api.models import load_model
 
 # Project-specific imports
 from config import CONFIG
+from data import generate_shifted_test_data
+
 
 
 # Function to extract min/max loss & accuracy from history
@@ -68,8 +73,14 @@ def evaluate_model(test_data, test_labels, verbose=0):
 
     print("\n🎯 Evaluate Model 🎯")
 
+    # Get directory of current script
+    CURRENT_DIR = Path(__file__).parent
+
+    # Construct path to file
+    model_path = CURRENT_DIR / "trained_model.h5"
+
     # Load trained model
-    model = load_model(CONFIG.MODEL_PATH)
+    model = load_model(model_path)
 
     # Evaluate trained model
     evaluation = model.evaluate(test_data, test_labels, verbose=verbose)
@@ -87,9 +98,30 @@ def evaluate_model(test_data, test_labels, verbose=0):
         print(f"Sample {i + 1}:")
         print(f"Predicted: {np.argmax(predictions[i])}, True: {test_labels[i]}")
 
+    # Generate shifted test set to evaluate model robustness to translation
+    shifted_test_data = generate_shifted_test_data(test_data)
+
+    # Evaluate trained model
+    shifted_evaluation = model.evaluate(shifted_test_data, test_labels, verbose=verbose)
+
+    # Print evaluation results
+    print("\n🔹 (Shifted) Evaluation Result:\n")
+    print(shifted_evaluation)
+
+    # Use trained model for predictions
+    shifted_predictions = model.predict(shifted_test_data)
+
+    # Print predictions
+    print("\n🔹 (Shifted) Predictions:\n")
+    for i in range(5):
+        print(f"Sample {i + 1}:")
+        print(f"Predicted: {np.argmax(predictions[i])}, True: {test_labels[i]}")
+
     return {
         "evaluation": evaluation,
         "predictions": predictions,
+        "shifted_evaluation": shifted_evaluation,
+        "shifted_predictions": shifted_predictions,
     }
 
 

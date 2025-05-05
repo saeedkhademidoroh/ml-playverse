@@ -38,7 +38,7 @@ train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data
 # analyze_dataset(train_data, train_labels, test_data, test_labels)
 
 # Build model
-model, description = build_model(1)
+model, description = build_model(6)
 
 # Train model
 model, history = train_model(train_data, train_labels, model, verbose=1)
@@ -46,8 +46,8 @@ model, history = train_model(train_data, train_labels, model, verbose=1)
 # Visualize history
 # visualize_history(history)
 
-# Evaluate model
-evaluation, predictions = evaluate_model(test_data, test_labels, verbose=1)
+# Evaluate model on original (unshifted) test data
+evaluation, predictions, shifted_evaluation, shifted_predictions = evaluate_model(test_data, test_labels, verbose=1)
 
 # Visualize predictions
 # visualize_predictions(test_data, test_labels, evaluation_result["predictions"], num_samples=10)
