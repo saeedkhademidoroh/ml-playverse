@@ -118,9 +118,11 @@ def evaluate_model(test_data, test_labels, verbose=0):
         print(f"Predicted: {np.argmax(predictions[i])}, True: {test_labels[i]}")
 
     return {
-        "evaluation": evaluation,
+        "final_test_loss": float(evaluation[0]),
+        "final_test_accuracy": float(evaluation[1]),
+        "shifted_test_loss": float(shifted_evaluation[0]),
+        "shifted_test_accuracy": float(shifted_evaluation[1]),
         "predictions": predictions,
-        "shifted_evaluation": shifted_evaluation,
         "shifted_predictions": shifted_predictions,
     }
 

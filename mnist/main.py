@@ -7,11 +7,9 @@ from experiment import run_experiment
 # from visualize import visualize_dataset, visualize_history, visualize_predictions
 
 
-# Run Model 1, one time
+# Run experiment
 run_experiment((1, 9), runs=10, replace=True)
 
-# Run Model 1 to 5, each 5 times
-# run_experiment((1, 11), runs=5, replace=True)
 
 # Run Model 3 one time
 # run_experiment(3)
@@ -21,6 +19,7 @@ run_experiment((1, 9), runs=10, replace=True)
 
 # Run specific models 1, 3, and 5, each 2 times
 # run_experiment([1, 3, 5], runs=2)
+
 
 # Load dataset
 # (train_data, train_labels), (test_data, test_labels) = load_dataset()
@@ -51,6 +50,7 @@ run_experiment((1, 9), runs=10, replace=True)
 
 # Visualize predictions
 # visualize_predictions(test_data, test_labels, evaluation["predictions"], num_samples=10)
+
 
 # Print confirmation message
 print("\n✅ main.py successfully executed")

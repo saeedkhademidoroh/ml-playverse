@@ -34,16 +34,13 @@ def add_experiment_result(
 
     Parameters:
         model (tf.keras.Model): The trained model.
-        history (tf.keras.callbacks.History): The training history.
-        accuracy (float): The accuracy of model.
-        error_count (int): The number of errors in model.
+        evaluation_result (dict): Dict containing final_test_loss, final_test_accuracy, etc.
         description (str, optional): Additional description of experiment.
 
     Notes:
         - If CSV/XLSX files do not exist, they are created.
         - Ensures compatibility between new experiment data and existing records.
     """
-
 
     # Print header for function
     print("\n🎯 Add Experiment Result 🎯\n")
@@ -60,23 +57,18 @@ def add_experiment_result(
     # Extract optimizer details
     optimizer = type(model.optimizer).__name__
 
-    # Extract training metrics
-    min_val_loss = evaluation_result["min_val_loss"]
-    max_val_acc = evaluation_result["max_val_acc"]
-    final_test_loss = evaluation_result["final_test_loss"]
-    final_test_accuracy = evaluation_result["final_test_accuracy"]
-
     # Create dictionary of extracted data
     row_data = {
         "#": name,
         "Time": time,
         "Layers-Count": layers_count,
         "Optimizer": optimizer,
-        "Min-Val-Loss": min_val_loss,
-        "Max-Val-Acc": max_val_acc,
-        "Fin-Test-Loss": final_test_loss,
-        "Fin-Test-Acc": final_test_accuracy,
+        "Fin-Test-Loss": evaluation_result.get("final_test_loss"),
+        "Fin-Test-Acc": evaluation_result.get("final_test_accuracy"),
+        "Shift-Test-Loss": evaluation_result.get("shifted_test_loss"),
+        "Shift-Test-Acc": evaluation_result.get("shifted_test_accuracy"),
     }
+
 
     # Print values being logged
     print("🔹 Experiment Results:\n")
@@ -85,70 +77,50 @@ def add_experiment_result(
 
     # Get directory of current script
     CURRENT_DIR = Path(__file__).parent
-
-    # Construct path to experiment results CSV file
     CSV_PATH = CURRENT_DIR / "experiment_results.csv"
-
-    # Construct path to experiment results XLSX file
     EXCEL_PATH = CURRENT_DIR / "experiment_results.xlsx"
 
-    # Load existing CSV or create new DataFrame
     try:
         experiment_results = pd.read_csv(CSV_PATH)
     except FileNotFoundError:
         experiment_results = pd.DataFrame(columns=row_data.keys())
 
-    # Ensure new row and experiment_results have matching columns
     new_row = pd.DataFrame([row_data])
     for col in new_row.columns:
         if col not in experiment_results.columns:
             experiment_results[col] = pd.NA
 
-    # Append new row to DataFrame
     experiment_results = pd.concat([new_row, experiment_results.dropna(axis=1, how="all")], ignore_index=True)
 
-    # Write updated DataFrame to CSV and XLSX files
     with pd.ExcelWriter(EXCEL_PATH, engine="xlsxwriter") as writer:
         experiment_results.to_excel(writer, index=False, sheet_name="Results")
-
-        # Get xlsxwriter workbook and worksheet objects
         workbook = writer.book
         worksheet = writer.sheets["Results"]
 
-        # Set column widths based on max length of data in each column
         for col_idx, col in enumerate(experiment_results.columns):
             max_length = max(experiment_results[col].astype(str).map(len).max(), len(col)) + 2
             worksheet.set_column(col_idx, col_idx, max_length)
 
-        # Create cell format for centering text horizontally and vertically
         cell_format = workbook.add_format({'align': 'center', 'valign': 'vcenter'})
-
-        # Create bold cell format for header
         header_format = workbook.add_format({'align': 'center', 'valign': 'vcenter', 'bold': True})
 
-        # Write header with bold formatting
         for col_idx in range(len(experiment_results.columns)):
             worksheet.write(0, col_idx, experiment_results.columns[col_idx], header_format)
 
-        # Write data rows with formatting (starting from row 1)
         for row_idx in range(len(experiment_results)):
             for col_idx in range(len(experiment_results.columns)):
                 value = experiment_results.iloc[row_idx, col_idx]
-
-                # Convert NaN/Inf to safe value
-                if pd.isna(value): # Check for NaN
+                if pd.isna(value):
                     value = "N/A"
-                elif value == np.inf: # Check for positive infinity
+                elif value == np.inf:
                     value = "Infinity"
-                elif value == -np.inf: # Check for negative infinity
+                elif value == -np.inf:
                     value = "-Infinity"
-
                 worksheet.write(row_idx + 1, col_idx, value, cell_format)
 
-
-    # Ensure directory exists and save file
     os.makedirs(os.path.dirname(CSV_PATH), exist_ok=True)
     experiment_results.to_csv(CSV_PATH, index=False)
+
 
 # Function to run experiments for specified models
 def run_experiment(model_numbers, runs=1, replace=True):
@@ -210,7 +182,7 @@ def run_experiment(model_numbers, runs=1, replace=True):
         analyze_dataset(train_data, train_labels, test_data, test_labels)
 
         # Preprocess dataset
-        train_data, train_labels, test_data, test_labels, val_data, val_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
+        train_data, train_labels, test_data, test_labels = preprocess_dataset(train_data, train_labels, test_data, test_labels)
 
         # Analyze dataset after preprocessing
         analyze_dataset(train_data, train_labels, test_data, test_labels)
@@ -223,13 +195,13 @@ def run_experiment(model_numbers, runs=1, replace=True):
                 model, description = build_model(model_number)
 
                 # Train model
-                model, history = train_model(train_data, train_labels, val_data, val_labels, model)
+                model, history = train_model(train_data, train_labels, model, verbose=0)
 
                 # Evaluate model
-                evaluation_result = evaluate_model(model, history, test_data, test_labels)
+                evaluation = evaluate_model(test_data, test_labels, verbose=0)
 
                 # Add experiment result
-                add_experiment_result(model, evaluation_result, description)
+                add_experiment_result(model, evaluation, description)
 
         # Restore stdout and stderr to terminal
         sys.stdout = sys.__stdout__
