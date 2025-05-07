@@ -175,6 +175,30 @@ def build_model(model_number: int) -> Model:
         model.compile(optimizer=Adam(), loss=CategoricalCrossentropy(), metrics=["categorical_accuracy"])
         description = None
 
+    elif model_number == 7:
+        from keras.api.applications import MobileNet
+
+        input_shape = (224, 224, 3)
+        base_model = MobileNet(input_shape=input_shape, include_top=False, weights="imagenet")
+        base_model.trainable = False
+
+        x = GlobalAveragePooling2D()(base_model.output)
+        prediction_layer = Dense(units=10, activation="softmax")(x)
+
+        model = Model(inputs=base_model.input, outputs=prediction_layer, name="m7_transfer_mobilenet")
+        model.compile(optimizer=Adam(), loss=CategoricalCrossentropy(), metrics=["categorical_accuracy"])
+        description = "Transfer learning using MobileNet"
+
+        # Adjust summary and inference time
+        model.summary()
+        start_time = timer()
+        _ = model(np.random.rand(1, 224, 224, 3))
+        elapsed_time = timer() - start_time
+        print("\n🔹 Inference Time:\n")
+        print(f"{elapsed_time:.6f} seconds (m7)")
+
+        return model, description
+
     else:
         raise ValueError(f"❌ Invalid model number: {model_number}")
 
