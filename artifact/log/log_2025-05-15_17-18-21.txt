@@ -1,27 +1,0 @@
-
-📝 Logging:
-/home/saeed/projects/ml/src/ml-playverse/artifact/log/log_2025-05-15_17-18-21.txt
-
-🎯 load_custom_config
-
-📂 Loading custom configuration:
-/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/clean.json
-
-🎯 clean_old_output
-
-⚪ Skipped: /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/artifact/log (clean_flag=True, exists=False)
-
-⚪ Skipped: /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/artifact/checkpoint (clean_flag=True, exists=False)
-
-⚪ Skipped: /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/artifact/result (clean_flag=True, exists=False)
-
-⚪ Skipped: /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/artifact/model (clean_flag=True, exists=False)
-
-⚪ Skipped: /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/artifact/error (clean_flag=True, exists=False)
-
-🚀 Launching m0_r1 (1/3) ...
-
-🎯 load_dataset
-
-🎯 load_dataset_m0
-0.0%0.0%0.1%0.1%0.1%0.1%0.1%0.2%0.2%0.2%0.2%0.2%0.2%0.3%0.3%0.3%0.3%0.3%0.4%0.4%0.4%0.4%0.4%0.5%0.5%
