@@ -7,8 +7,8 @@
   "MODEL_PATH": "artifact/model/",
   "ERROR_PATH": "artifact/error",
 
-  "LIGHT_MODE": true,
-  "AUGMENT_MODE": true,
+  "LIGHT_MODE": false,
+  "AUGMENT_MODE": false,
 
   "SCHEDULE_MODE": {
     "enabled": true,
@@ -18,18 +18,20 @@
     "min_lr": 1e-5,
     "verbose": 1
   },
+
   "EARLY_STOP_MODE": {
-    "enabled": true,
+    "enabled": false,
     "monitor": "val_accuracy",
     "patience": 5,
     "restore_best_weights": true,
     "verbose": 1
   },
+
   "OPTIMIZER": {
     "type": "adam",
     "learning_rate": 0.01,
     "momentum": 0.9
   },
   "EPOCHS_COUNT": 16,
-  "BATCH_SIZE": 4
+  "BATCH_SIZE": 64
 }
