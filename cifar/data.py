@@ -4,9 +4,83 @@ from torchvision import datasets, transforms
 from torchvision import transforms
 
 
-# Function to load dataset for model 5
+# CIFAR-10 channel statistics (for standardization)
+_CIFAR10_MEAN = [0.4914, 0.4822, 0.4465]
+_CIFAR10_STD  = [0.2023, 0.1994, 0.2010]
+
+
+# Function to load dataset for model 7
+def _load_dataset_m7(config):
+    return _load_dataset_m6(config)
+
+# Function to load dataset for model 6
 def _load_dataset_m6(config):
-    return _load_dataset_m0(config)
+    """
+    Loads the CIFAR-10 dataset using per-channel standardization.
+
+    This loader is specialized for model 6 and uses zero-mean, unit-variance
+    normalization (instead of naive /255 scaling) to improve convergence.
+    Supports light mode for debugging and optional data augmentation.
+
+    Args:
+        config (Config): Configuration object with path and toggle settings.
+
+    Returns:
+        tuple: (train_data, train_labels, test_data, test_labels)
+    """
+
+    # Print header for function execution
+    print("\n🎯  _load_dataset_m6")
+
+    # Download CIFAR-10 dataset
+    train_set = datasets.CIFAR10(root=config.DATA_PATH, train=True, download=True)
+    test_set = datasets.CIFAR10(root=config.DATA_PATH, train=False, download=True)
+
+    # Normalize using CIFAR-10 per-channel standardization
+    train_data = _standardize(train_set.data)
+    test_data = _standardize(test_set.data)
+
+    # Convert labels to numpy arrays
+    train_labels = np.array(train_set.targets)
+    test_labels = np.array(test_set.targets)
+
+    # Subsample if LIGHT_MODE is enabled
+    if config.LIGHT_MODE:
+        train_data = train_data[:1000]
+        train_labels = train_labels[:1000]
+        test_data = test_data[:200]
+        test_labels = test_labels[:200]
+    else:
+        train_data = train_data[:-5000]
+        train_labels = train_labels[:-5000]
+
+    # Apply augmentation if enabled
+    if config.AUGMENT_MODE:
+        train_data = _augment_dataset(train_data)
+
+    return train_data, train_labels, test_data, test_labels
+
+
+# Function to standardize CIFAR-10 input images
+def _standardize(images):
+    """
+    Standardizes CIFAR-10 images by scaling to [0, 1], then normalizing each
+    channel to zero mean and unit variance using precomputed dataset statistics.
+
+    Args:
+        images (np.ndarray): Input image array of shape (N, 32, 32, 3) in uint8 format.
+
+    Returns:
+        np.ndarray: Standardized float32 image array with shape (N, 32, 32, 3).
+    """
+
+    # Print header for function execution
+    print("\n🎯  _standardize")
+
+    images = images.astype(np.float32) / 255.0
+    for i in range(3):  # Normalize each RGB channel
+        images[..., i] = (images[..., i] - _CIFAR10_MEAN[i]) / _CIFAR10_STD[i]
+    return images
 
 
 # Function to load dataset for model 5
@@ -34,7 +108,7 @@ def _load_dataset_m1(config):
     return _load_dataset_m0(config)
 
 
-# Function to load dataset for model 0 (shared logic)
+# Function to load dataset for model 0
 def _load_dataset_m0(config):
     """
     Function to load and preprocess the CIFAR-10 dataset.

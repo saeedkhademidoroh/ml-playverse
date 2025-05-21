@@ -273,6 +273,48 @@ def build_model(model_number: int, config) -> Model:
         x = maybe_dropout(x)
         prediction_layer = Dense(10, activation="softmax", kernel_regularizer=reg)(x)
 
+    # Model 7: ResNet-20 style (deeper, narrower, under 400k params)
+    elif model_number == 7:
+        # Initial Conv(20)
+        x = Conv2D(20, (3, 3), padding="same", kernel_regularizer=reg)(input_layer)
+        x = BatchNormalization()(x)
+        x = Activation("relu")(x)
+
+        def res_block(x, filters, downsample=False):
+            stride = 2 if downsample else 1
+            shortcut = x
+            x = Conv2D(filters, (3, 3), strides=stride, padding="same", kernel_regularizer=reg)(x)
+            x = BatchNormalization()(x)
+            x = Activation("relu")(x)
+            x = Conv2D(filters, (3, 3), padding="same", kernel_regularizer=reg)(x)
+            x = BatchNormalization()(x)
+
+            if downsample or shortcut.shape[-1] != filters:
+                shortcut = Conv2D(filters, (1, 1), strides=stride, padding="same", kernel_regularizer=reg)(shortcut)
+
+            x = Add()([x, shortcut])
+            x = Activation("relu")(x)
+            return x
+
+        # Stage 1: 3 blocks @ 20 filters
+        for _ in range(3):
+            x = res_block(x, 20)
+
+        # Stage 2: 3 blocks @ 40 filters, first with downsampling
+        x = res_block(x, 40, downsample=True)
+        for _ in range(2):
+            x = res_block(x, 40)
+
+        # Stage 3: 3 blocks @ 80 filters, first with downsampling
+        x = res_block(x, 80, downsample=True)
+        for _ in range(2):
+            x = res_block(x, 80)
+
+        # Final layers
+        x = GlobalAveragePooling2D()(x)
+        x = maybe_dropout(x)
+        prediction_layer = Dense(10, activation="softmax", kernel_regularizer=reg)(x)
+
     else:
         raise ValueError(f"❌ ValueError from model.py at build_model():\nmodel_number={model_number}\n")
 
