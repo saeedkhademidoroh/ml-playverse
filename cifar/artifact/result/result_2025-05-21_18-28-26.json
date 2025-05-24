@@ -1,0 +1,41 @@
+[
+  {
+    "model": 7,
+    "run": 1,
+    "config": "m7_light",
+    "date": "2025-05-21",
+    "time": "18:28:51",
+    "duration": "0:00:24",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.3
+      },
+      "OPTIMIZER": {
+        "type": "sgd",
+        "learning_rate": 0.05,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 16,
+      "BATCH_SIZE": 32
+    },
+    "min_train_loss": 2.466564893722534,
+    "min_train_loss_epoch": 16,
+    "max_train_acc": 0.23000000417232513,
+    "max_train_acc_epoch": 13,
+    "min_val_loss": 2.6314480304718018,
+    "min_val_loss_epoch": 14,
+    "max_val_acc": 0.16500000655651093,
+    "max_val_acc_epoch": 13,
+    "final_test_loss": 6.076815605163574,
+    "final_test_acc": 0.125
+  }
+]

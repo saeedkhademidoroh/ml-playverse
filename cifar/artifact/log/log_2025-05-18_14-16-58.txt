@@ -1,0 +1,674 @@
+
+📜  Logging experiment output:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/log/log_2025-05-18_14-16-58.txt
+
+🎯  _load_previous_results
+
+⚙️   Piplining experiment 1/6
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/log
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/result
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/model
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m0_r1 with 'default'
+
+🎯  dispatch_load_dataset
+
+🎯  _load_dataset_m0
+
+  0%|          | 0.00/170M [00:00<?, ?B/s]
+  0%|          | 426k/170M [00:00<00:41, 4.06MB/s]
+  4%|4         | 7.24M/170M [00:00<00:03, 41.0MB/s]
+ 11%|#1        | 18.9M/170M [00:00<00:02, 75.1MB/s]
+ 18%|#7        | 30.4M/170M [00:00<00:01, 90.9MB/s]
+ 25%|##4       | 42.0M/170M [00:00<00:01, 99.6MB/s]
+ 31%|###1      | 53.5M/170M [00:00<00:01, 104MB/s] 
+ 38%|###7      | 64.7M/170M [00:00<00:00, 107MB/s]
+ 44%|####4     | 75.4M/170M [00:00<00:00, 105MB/s]
+ 50%|#####     | 86.0M/170M [00:00<00:00, 97.9MB/s]
+ 56%|#####6    | 95.9M/170M [00:01<00:00, 93.9MB/s]
+ 62%|######1   | 105M/170M [00:01<00:00, 90.2MB/s] 
+ 67%|######7   | 115M/170M [00:01<00:00, 89.7MB/s]
+ 72%|#######2  | 124M/170M [00:01<00:00, 88.4MB/s]
+ 78%|#######7  | 132M/170M [00:01<00:00, 87.8MB/s]
+ 83%|########2 | 141M/170M [00:01<00:00, 75.0MB/s]
+ 89%|########9 | 152M/170M [00:01<00:00, 84.0MB/s]
+ 94%|#########4| 161M/170M [00:01<00:00, 85.1MB/s]
+100%|#########9| 170M/170M [00:01<00:00, 85.5MB/s]
+100%|##########| 170M/170M [00:01<00:00, 87.4MB/s]
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)        │ (None, 32, 32, 3)      │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d (Conv2D)                 │ (None, 32, 32, 32)     │           896 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (Conv2D)               │ (None, 32, 32, 32)     │         9,248 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (MaxPooling2D)    │ (None, 16, 16, 32)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_2 (Conv2D)               │ (None, 16, 16, 64)     │        18,496 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_3 (Conv2D)               │ (None, 16, 16, 64)     │        36,928 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_1 (MaxPooling2D)  │ (None, 8, 8, 64)       │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (Flatten)               │ (None, 4096)           │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 128)            │       524,416 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 128)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 10)             │         1,290 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 591,274 (2.26 MB)
+ Trainable params: 591,274 (2.26 MB)
+ Non-trainable params: 0 (0.00 B)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            8
+Batch Size:        8
+
+Epoch 1/8
+
+Epoch 1: val_accuracy improved from -inf to 0.07000, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/best.keras
+
+Epoch 1: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 17:47
+
+100/100 - 10s - 101ms/step - accuracy: 0.0862 - loss: 2.8031 - val_accuracy: 0.0700 - val_loss: 2.4596 - learning_rate: 0.0100
+Epoch 2/8
+
+Epoch 2: val_accuracy did not improve from 0.07000
+
+Epoch 2: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 17:47
+
+100/100 - 5s - 54ms/step - accuracy: 0.0962 - loss: 2.4188 - val_accuracy: 0.0700 - val_loss: 2.4073 - learning_rate: 0.0100
+Epoch 3/8
+
+Epoch 3: val_accuracy did not improve from 0.07000
+
+Epoch 3: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 17:47
+
+100/100 - 6s - 56ms/step - accuracy: 0.0875 - loss: 2.3818 - val_accuracy: 0.0700 - val_loss: 2.3791 - learning_rate: 0.0100
+Epoch 4/8
+
+Epoch 4: val_accuracy did not improve from 0.07000
+
+Epoch 4: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_04.keras
+
+Epoch 4: ReduceLROnPlateau reducing learning rate to 0.004999999888241291.
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 17:47
+
+100/100 - 9s - 94ms/step - accuracy: 0.1000 - loss: 2.3585 - val_accuracy: 0.0700 - val_loss: 2.3618 - learning_rate: 0.0100
+Epoch 5/8
+
+Epoch 5: val_accuracy improved from 0.07000 to 0.11500, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/best.keras
+
+Epoch 5: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_05.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_5
+
+🕒  Recording time at 17:47
+
+100/100 - 7s - 72ms/step - accuracy: 0.0975 - loss: 2.3466 - val_accuracy: 0.1150 - val_loss: 2.3559 - learning_rate: 0.0050
+Epoch 6/8
+
+Epoch 6: val_accuracy did not improve from 0.11500
+
+Epoch 6: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_06.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_6
+
+🕒  Recording time at 17:47
+
+100/100 - 8s - 84ms/step - accuracy: 0.0962 - loss: 2.3407 - val_accuracy: 0.0700 - val_loss: 2.3520 - learning_rate: 0.0050
+Epoch 7/8
+
+Epoch 7: val_accuracy did not improve from 0.11500
+
+Epoch 7: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_07.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_7
+
+🕒  Recording time at 17:48
+
+100/100 - 7s - 70ms/step - accuracy: 0.0950 - loss: 2.3364 - val_accuracy: 0.0700 - val_loss: 2.3483 - learning_rate: 0.0050
+Epoch 8/8
+
+Epoch 8: val_accuracy did not improve from 0.11500
+
+Epoch 8: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_08.keras
+
+Epoch 8: ReduceLROnPlateau reducing learning rate to 0.0024999999441206455.
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_8
+
+🕒  Recording time at 17:48
+
+100/100 - 8s - 79ms/step - accuracy: 0.1000 - loss: 2.3320 - val_accuracy: 0.0700 - val_loss: 2.3447 - learning_rate: 0.0050
+Restoring model weights from the end of the best epoch: 5.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 0,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-18",
+    "time": "14:18:11",
+    "duration": "0:01:12",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 8,
+      "BATCH_SIZE": 8
+    },
+    "min_train_loss": 2.3320424556732178,
+    "min_train_loss_epoch": 8,
+    "max_train_acc": 0.10000000149011612,
+    "max_train_acc_epoch": 4,
+    "min_val_loss": 2.344681739807129,
+    "min_val_loss_epoch": 8,
+    "max_val_acc": 0.11500000208616257,
+    "max_val_acc_epoch": 5,
+    "final_test_loss": 2.3486526012420654,
+    "final_test_acc": 0.07000000029802322
+  }
+]
+
+✅   m0 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 2/6
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/config/v0_base.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/log
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/result
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/model
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m0_r2 with 'v0_base'
+
+🎯  dispatch_load_dataset
+
+🎯  _load_dataset_m0
+
+🎯  build_model
+
+Model: "functional_1"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_1 (InputLayer)      │ (None, 32, 32, 3)      │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_4 (Conv2D)               │ (None, 32, 32, 32)     │           896 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_5 (Conv2D)               │ (None, 32, 32, 32)     │         9,248 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_2 (MaxPooling2D)  │ (None, 16, 16, 32)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_6 (Conv2D)               │ (None, 16, 16, 64)     │        18,496 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_7 (Conv2D)               │ (None, 16, 16, 64)     │        36,928 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_3 (MaxPooling2D)  │ (None, 8, 8, 64)       │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten_1 (Flatten)             │ (None, 4096)           │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (Dense)                 │ (None, 128)            │       524,416 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_3 (Dense)                 │ (None, 10)             │         1,290 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 591,274 (2.26 MB)
+ Trainable params: 591,274 (2.26 MB)
+ Non-trainable params: 0 (0.00 B)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       OFF
+Augmentation:     OFF
+L2 Regularization: OFF (λ=0.0005)
+Dropout:           OFF (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      OFF
+Early Stopping:    OFF
+Epochs:            8
+Batch Size:        8
+
+Epoch 1/8
+
+Epoch 1: val_accuracy improved from -inf to 0.09940, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/best.keras
+
+Epoch 1: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 17:52
+
+5000/5000 - 237s - 47ms/step - accuracy: 0.1004 - loss: 2.3071 - val_accuracy: 0.0994 - val_loss: 2.3056
+Epoch 2/8
+
+Epoch 2: val_accuracy did not improve from 0.09940
+
+Epoch 2: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 17:56
+
+5000/5000 - 263s - 53ms/step - accuracy: 0.1006 - loss: 2.3054 - val_accuracy: 0.0994 - val_loss: 2.3042
+Epoch 3/8
+
+Epoch 3: val_accuracy did not improve from 0.09940
+
+Epoch 3: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 18:00
+
+5000/5000 - 259s - 52ms/step - accuracy: 0.1016 - loss: 2.3053 - val_accuracy: 0.0946 - val_loss: 2.3049
+Epoch 4/8
+
+Epoch 4: val_accuracy improved from 0.09940 to 0.10440, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/best.keras
+
+Epoch 4: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 18:05
+
+5000/5000 - 264s - 53ms/step - accuracy: 0.1003 - loss: 2.3050 - val_accuracy: 0.1044 - val_loss: 2.3037
+Epoch 5/8
+
+Epoch 5: val_accuracy did not improve from 0.10440
+
+Epoch 5: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_05.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_5
+
+🕒  Recording time at 18:09
+
+5000/5000 - 260s - 52ms/step - accuracy: 0.0989 - loss: 2.3050 - val_accuracy: 0.0992 - val_loss: 2.3050
+Epoch 6/8
+
+Epoch 6: val_accuracy improved from 0.10440 to 0.10520, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/best.keras
+
+Epoch 6: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_06.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_6
+
+🕒  Recording time at 18:14
+
+5000/5000 - 266s - 53ms/step - accuracy: 0.1008 - loss: 2.3054 - val_accuracy: 0.1052 - val_loss: 2.3056
+Epoch 7/8
+
+Epoch 7: val_accuracy did not improve from 0.10520
+
+Epoch 7: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_07.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_7
+
+🕒  Recording time at 18:18
+
+5000/5000 - 259s - 52ms/step - accuracy: 0.1003 - loss: 2.3052 - val_accuracy: 0.0984 - val_loss: 2.3057
+Epoch 8/8
+
+Epoch 8: val_accuracy did not improve from 0.10520
+
+Epoch 8: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r2_v0_base/epoch_08.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_8
+
+🕒  Recording time at 18:22
+
+5000/5000 - 264s - 53ms/step - accuracy: 0.0989 - loss: 2.3054 - val_accuracy: 0.1044 - val_loss: 2.3045
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 0,
+    "run": 2,
+    "config": "v0_base",
+    "date": "2025-05-18",
+    "time": "14:53:30",
+    "duration": "0:35:18",
+    "parameters": {
+      "LIGHT_MODE": false,
+      "AUGMENT_MODE": false,
+      "L2_MODE": {
+        "enabled": false,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": false,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": false,
+      "EARLY_STOP_MODE": false,
+      "EPOCHS_COUNT": 8,
+      "BATCH_SIZE": 8
+    },
+    "min_train_loss": 2.3050150871276855,
+    "min_train_loss_epoch": 5,
+    "max_train_acc": 0.10164999961853027,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.303680896759033,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.10520000010728836,
+    "max_val_acc_epoch": 6,
+    "final_test_loss": 2.304928779602051,
+    "final_test_acc": 0.10000000149011612
+  }
+]
+
+✅   m0 run 2 with 'v0_base' successfully executed
+
+⚙️   Piplining experiment 3/6
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/config/v0_drop.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/log
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/result
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/model
+
+📂  Ensuring output directories:
+/content/drive/MyDrive/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m0_r3 with 'v0_drop'
+
+🎯  dispatch_load_dataset
+
+🎯  _load_dataset_m0
+
+🎯  build_model
+
+Model: "functional_2"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer_2 (InputLayer)      │ (None, 32, 32, 3)      │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_8 (Conv2D)               │ (None, 32, 32, 32)     │           896 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_9 (Conv2D)               │ (None, 32, 32, 32)     │         9,248 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_4 (MaxPooling2D)  │ (None, 16, 16, 32)     │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_10 (Conv2D)              │ (None, 16, 16, 64)     │        18,496 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_11 (Conv2D)              │ (None, 16, 16, 64)     │        36,928 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_5 (MaxPooling2D)  │ (None, 8, 8, 64)       │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten_2 (Flatten)             │ (None, 4096)           │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_4 (Dense)                 │ (None, 128)            │       524,416 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (Dropout)             │ (None, 128)            │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_5 (Dense)                 │ (None, 10)             │         1,290 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 591,274 (2.26 MB)
+ Trainable params: 591,274 (2.26 MB)
+ Non-trainable params: 0 (0.00 B)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       OFF
+Augmentation:     OFF
+L2 Regularization: OFF (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      OFF
+Early Stopping:    OFF
+Epochs:            8
+Batch Size:        8
+
+Epoch 1/8
+
+Epoch 1: val_accuracy improved from -inf to 0.10200, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/best.keras
+
+Epoch 1: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 18:27
+
+5000/5000 - 238s - 48ms/step - accuracy: 0.0976 - loss: 2.3084 - val_accuracy: 0.1020 - val_loss: 2.3032
+Epoch 2/8
+
+Epoch 2: val_accuracy did not improve from 0.10200
+
+Epoch 2: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 18:31
+
+5000/5000 - 259s - 52ms/step - accuracy: 0.0989 - loss: 2.3056 - val_accuracy: 0.0984 - val_loss: 2.3050
+Epoch 3/8
+
+Epoch 3: val_accuracy improved from 0.10200 to 0.10440, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/best.keras
+
+Epoch 3: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 18:36
+
+5000/5000 - 264s - 53ms/step - accuracy: 0.1006 - loss: 2.3053 - val_accuracy: 0.1044 - val_loss: 2.3050
+Epoch 4/8
+
+Epoch 4: val_accuracy did not improve from 0.10440
+
+Epoch 4: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 18:40
+
+5000/5000 - 263s - 53ms/step - accuracy: 0.1017 - loss: 2.3053 - val_accuracy: 0.0946 - val_loss: 2.3095
+Epoch 5/8
+
+Epoch 5: val_accuracy improved from 0.10440 to 0.10520, saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/best.keras
+
+Epoch 5: saving model to /content/drive/MyDrive/src/ml-playverse/cifar/artifact/checkpoint/m0_r3_v0_drop/epoch_05.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_5
+
+🕒  Recording time at 18:44
+
+5000/5000 - 259s - 52ms/step - accuracy: 0.0997 - loss: 2.3051 - val_accuracy: 0.1052 - val_loss: 2.3051
+Epoch 6/8

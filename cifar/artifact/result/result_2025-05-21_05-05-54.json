@@ -1,0 +1,41 @@
+[
+  {
+    "model": 6,
+    "run": 1,
+    "config": "m6_base",
+    "date": "2025-05-21",
+    "time": "12:16:28",
+    "duration": "7:10:33",
+    "parameters": {
+      "LIGHT_MODE": false,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.3
+      },
+      "OPTIMIZER": {
+        "type": "sgd",
+        "learning_rate": 0.05,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 100,
+      "BATCH_SIZE": 32
+    },
+    "min_train_loss": 0.10141633450984955,
+    "min_train_loss_epoch": 32,
+    "max_train_acc": 1.0,
+    "max_train_acc_epoch": 23,
+    "min_val_loss": 0.49369141459465027,
+    "min_val_loss_epoch": 31,
+    "max_val_acc": 0.8913999795913696,
+    "max_val_acc_epoch": 22,
+    "final_test_loss": 0.5443299412727356,
+    "final_test_acc": 0.890500009059906
+  }
+]
