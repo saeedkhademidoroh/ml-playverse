@@ -1,0 +1,353 @@
+[
+  {
+    "model": 0,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:24:30",
+    "duration": "0:00:35",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.3180549144744873,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.10249999910593033,
+    "max_train_acc_epoch": 2,
+    "min_val_loss": 2.3246512413024902,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.08500000089406967,
+    "max_val_acc_epoch": 1,
+    "final_test_loss": 2.3801028728485107,
+    "final_test_acc": 0.10000000149011612
+  },
+  {
+    "model": 1,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:06",
+    "duration": "0:00:36",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.4795827865600586,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.17624999582767487,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.4903156757354736,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.17000000178813934,
+    "max_val_acc_epoch": 2,
+    "final_test_loss": 6.459811210632324,
+    "final_test_acc": 0.15000000596046448
+  },
+  {
+    "model": 2,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:21",
+    "duration": "0:00:14",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.2343873977661133,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.1875,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.1723272800445557,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.1850000023841858,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 3.937009334564209,
+    "final_test_acc": 0.1850000023841858
+  },
+  {
+    "model": 3,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:41",
+    "duration": "0:00:20",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.2573792934417725,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.1850000023841858,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.3795993328094482,
+    "min_val_loss_epoch": 2,
+    "max_val_acc": 0.16500000655651093,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 4.871713161468506,
+    "final_test_acc": 0.125
+  },
+  {
+    "model": 4,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:59",
+    "duration": "0:00:17",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.222644090652466,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.19499999284744263,
+    "max_train_acc_epoch": 4,
+    "min_val_loss": 2.084770441055298,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.20000000298023224,
+    "max_val_acc_epoch": 4,
+    "final_test_loss": 5.725679874420166,
+    "final_test_acc": 0.12999999523162842
+  },
+  {
+    "model": 5,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:26:24",
+    "duration": "0:00:25",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.3213114738464355,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.16124999523162842,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.3035194873809814,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.1550000011920929,
+    "max_val_acc_epoch": 1,
+    "final_test_loss": 6.05612325668335,
+    "final_test_acc": 0.08500000089406967
+  },
+  {
+    "model": 6,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:27:23",
+    "duration": "0:00:58",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.653496503829956,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.12999999523162842,
+    "max_train_acc_epoch": 4,
+    "min_val_loss": 2.619711399078369,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.11500000208616257,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 37.214420318603516,
+    "final_test_acc": 0.10000000149011612
+  },
+  {
+    "model": 7,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:28:23",
+    "duration": "0:01:00",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.6599011421203613,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.11375000327825546,
+    "max_train_acc_epoch": 2,
+    "min_val_loss": 2.637030839920044,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.11500000208616257,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 2.608859062194824,
+    "final_test_acc": 0.16500000655651093
+  },
+  {
+    "model": 8,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:29:08",
+    "duration": "0:00:45",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.4207825660705566,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.16500000655651093,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.5736632347106934,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.1599999964237213,
+    "max_val_acc_epoch": 2,
+    "final_test_loss": 3.08827543258667,
+    "final_test_acc": 0.20999999344348907
+  }
+]

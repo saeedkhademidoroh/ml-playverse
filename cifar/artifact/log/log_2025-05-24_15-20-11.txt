@@ -1,0 +1,33 @@
+
+📜  Logging experiment output:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log/log_2025-05-24_15-20-11.txt
+
+🎯  _load_previous_results
+
+⚙️   Piplining experiment 1/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m0_r1 with 'default'
+
+🎯  load_dataset
+
+🎯  log_to_json
+
+❌ Error from log.py at log_to_json():
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error/error_2025-05-24_15-22-24.json
+

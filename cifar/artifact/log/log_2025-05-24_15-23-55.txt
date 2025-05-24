@@ -1,0 +1,2550 @@
+
+📜  Logging experiment output:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log/log_2025-05-24_15-23-55.txt
+
+🎯  _load_previous_results
+
+⚙️   Piplining experiment 1/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m0_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional"
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Layer (type)       ┃ Output Shape ┃ Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ input_layer        │ (None, 32,   │       0 │
+│ (InputLayer)       │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d (Conv2D)    │ (None, 32,   │     896 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_1 (Conv2D)  │ (None, 32,   │   9,248 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d      │ (None, 16,   │       0 │
+│ (MaxPooling2D)     │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_2 (Conv2D)  │ (None, 16,   │  18,496 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_3 (Conv2D)  │ (None, 16,   │  36,928 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_1    │ (None, 8, 8, │       0 │
+│ (MaxPooling2D)     │ 64)          │         │
+├────────────────────┼──────────────┼─────────┤
+│ flatten (Flatten)  │ (None, 4096) │       0 │
+├────────────────────┼──────────────┼─────────┤
+│ dense (Dense)      │ (None, 128)  │ 524,416 │
+├────────────────────┼──────────────┼─────────┤
+│ dropout (Dropout)  │ (None, 128)  │       0 │
+├────────────────────┼──────────────┼─────────┤
+│ dense_1 (Dense)    │ (None, 10)   │   1,290 │
+└────────────────────┴──────────────┴─────────┘
+ Total params: 591,274 (2.26 MB)
+ Trainable params: 591,274 (2.26 MB)
+ Non-trainable params: 0 (0.00 B)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.08500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:24
+
+200/200 - 8s - 38ms/step - accuracy: 0.0812 - loss: 2.5248 - val_accuracy: 0.0850 - val_loss: 2.3821 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy did not improve from 0.08500
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:24
+
+200/200 - 6s - 29ms/step - accuracy: 0.1025 - loss: 2.3547 - val_accuracy: 0.0700 - val_loss: 2.3478 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy did not improve from 0.08500
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:24
+
+200/200 - 7s - 33ms/step - accuracy: 0.1013 - loss: 2.3276 - val_accuracy: 0.0700 - val_loss: 2.3354 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.08500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m0_r1_default/epoch_04.keras
+
+Epoch 4: ReduceLROnPlateau reducing learning rate to 0.004999999888241291.
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:24
+
+200/200 - 5s - 26ms/step - accuracy: 0.0850 - loss: 2.3181 - val_accuracy: 0.0700 - val_loss: 2.3247 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 1.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 0,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:24:30",
+    "duration": "0:00:35",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.3180549144744873,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.10249999910593033,
+    "max_train_acc_epoch": 2,
+    "min_val_loss": 2.3246512413024902,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.08500000089406967,
+    "max_val_acc_epoch": 1,
+    "final_test_loss": 2.3801028728485107,
+    "final_test_acc": 0.10000000149011612
+  }
+]
+
+✅   m0 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 2/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m1_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_1"
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Layer (type)       ┃ Output Shape ┃ Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ input_layer_1      │ (None, 32,   │       0 │
+│ (InputLayer)       │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_4 (Conv2D)  │ (None, 32,   │     896 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation         │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_5 (Conv2D)  │ (None, 32,   │   9,248 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_1       │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_2    │ (None, 16,   │       0 │
+│ (MaxPooling2D)     │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_6 (Conv2D)  │ (None, 16,   │  18,496 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_2       │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_7 (Conv2D)  │ (None, 16,   │  36,928 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_3       │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_3    │ (None, 8, 8, │       0 │
+│ (MaxPooling2D)     │ 64)          │         │
+├────────────────────┼──────────────┼─────────┤
+│ flatten_1          │ (None, 4096) │       0 │
+│ (Flatten)          │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dense_2 (Dense)    │ (None, 128)  │ 524,416 │
+├────────────────────┼──────────────┼─────────┤
+│ dropout_1          │ (None, 128)  │       0 │
+│ (Dropout)          │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dense_3 (Dense)    │ (None, 10)   │   1,290 │
+└────────────────────┴──────────────┴─────────┘
+ Total params: 592,042 (2.26 MB)
+ Trainable params: 591,658 (2.26 MB)
+ Non-trainable params: 384 (1.50 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.14500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:24
+
+200/200 - 9s - 46ms/step - accuracy: 0.1375 - loss: 6.0340 - val_accuracy: 0.1450 - val_loss: 2.8865 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy improved from 0.14500 to 0.17000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/best.keras
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:24
+
+200/200 - 5s - 24ms/step - accuracy: 0.1500 - loss: 2.7470 - val_accuracy: 0.1700 - val_loss: 2.7725 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy did not improve from 0.17000
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:25
+
+200/200 - 5s - 23ms/step - accuracy: 0.1762 - loss: 2.5536 - val_accuracy: 0.1250 - val_loss: 2.5566 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.17000
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m1_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:25
+
+200/200 - 5s - 23ms/step - accuracy: 0.1488 - loss: 2.4796 - val_accuracy: 0.1250 - val_loss: 2.4903 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 2.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 1,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:06",
+    "duration": "0:00:36",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.4795827865600586,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.17624999582767487,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.4903156757354736,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.17000000178813934,
+    "max_val_acc_epoch": 2,
+    "final_test_loss": 6.459811210632324,
+    "final_test_acc": 0.15000000596046448
+  }
+]
+
+✅   m1 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 3/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m2_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_2"
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Layer (type)       ┃ Output Shape ┃ Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ input_layer_2      │ (None, 32,   │       0 │
+│ (InputLayer)       │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_8 (Conv2D)  │ (None, 32,   │     448 │
+│                    │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │      64 │
+│ (BatchNormalizati… │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_4       │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_9 (Conv2D)  │ (None, 32,   │   2,320 │
+│                    │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │      64 │
+│ (BatchNormalizati… │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_5       │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_4    │ (None, 16,   │       0 │
+│ (MaxPooling2D)     │ 16, 16)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_10 (Conv2D) │ (None, 16,   │   4,640 │
+│                    │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     128 │
+│ (BatchNormalizati… │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_6       │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_11 (Conv2D) │ (None, 16,   │   9,248 │
+│                    │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     128 │
+│ (BatchNormalizati… │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_7       │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_5    │ (None, 8, 8, │       0 │
+│ (MaxPooling2D)     │ 32)          │         │
+├────────────────────┼──────────────┼─────────┤
+│ global_average_po… │ (None, 32)   │       0 │
+│ (GlobalAveragePoo… │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dropout_2          │ (None, 32)   │       0 │
+│ (Dropout)          │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dense_4 (Dense)    │ (None, 10)   │     330 │
+└────────────────────┴──────────────┴─────────┘
+ Total params: 17,370 (67.85 KB)
+ Trainable params: 17,178 (67.10 KB)
+ Non-trainable params: 192 (768.00 B)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.12500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:25
+
+200/200 - 4s - 21ms/step - accuracy: 0.1450 - loss: 2.4629 - val_accuracy: 0.1250 - val_loss: 2.4194 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy improved from 0.12500 to 0.17000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/best.keras
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:25
+
+200/200 - 2s - 11ms/step - accuracy: 0.1600 - loss: 2.2889 - val_accuracy: 0.1700 - val_loss: 2.2434 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy improved from 0.17000 to 0.18500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/best.keras
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:25
+
+200/200 - 2s - 11ms/step - accuracy: 0.1875 - loss: 2.2593 - val_accuracy: 0.1850 - val_loss: 2.1723 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.18500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m2_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:25
+
+200/200 - 2s - 10ms/step - accuracy: 0.1575 - loss: 2.2344 - val_accuracy: 0.0900 - val_loss: 3.7343 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 3.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 2,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:21",
+    "duration": "0:00:14",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.2343873977661133,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.1875,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.1723272800445557,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.1850000023841858,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 3.937009334564209,
+    "final_test_acc": 0.1850000023841858
+  }
+]
+
+✅   m2 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 4/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m3_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_3"
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Layer (type)       ┃ Output Shape ┃ Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ input_layer_3      │ (None, 32,   │       0 │
+│ (InputLayer)       │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_12 (Conv2D) │ (None, 32,   │     896 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_8       │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_13 (Conv2D) │ (None, 32,   │   9,248 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_9       │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_6    │ (None, 16,   │       0 │
+│ (MaxPooling2D)     │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_14 (Conv2D) │ (None, 16,   │  18,496 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_10      │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_15 (Conv2D) │ (None, 16,   │  36,928 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_11      │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_7    │ (None, 8, 8, │       0 │
+│ (MaxPooling2D)     │ 64)          │         │
+├────────────────────┼──────────────┼─────────┤
+│ global_average_po… │ (None, 64)   │       0 │
+│ (GlobalAveragePoo… │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dropout_3          │ (None, 64)   │       0 │
+│ (Dropout)          │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dense_5 (Dense)    │ (None, 10)   │     650 │
+└────────────────────┴──────────────┴─────────┘
+ Total params: 66,986 (261.66 KB)
+ Trainable params: 66,602 (260.16 KB)
+ Non-trainable params: 384 (1.50 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.12500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:25
+
+200/200 - 6s - 30ms/step - accuracy: 0.1462 - loss: 2.6085 - val_accuracy: 0.1250 - val_loss: 2.5687 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy did not improve from 0.12500
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:25
+
+200/200 - 4s - 18ms/step - accuracy: 0.1412 - loss: 2.3995 - val_accuracy: 0.0900 - val_loss: 2.3796 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy improved from 0.12500 to 0.16500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/best.keras
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:25
+
+200/200 - 4s - 18ms/step - accuracy: 0.1850 - loss: 2.2918 - val_accuracy: 0.1650 - val_loss: 2.5848 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.16500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m3_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:25
+
+200/200 - 4s - 18ms/step - accuracy: 0.1700 - loss: 2.2574 - val_accuracy: 0.1400 - val_loss: 2.7630 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 3.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 3,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:41",
+    "duration": "0:00:20",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.2573792934417725,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.1850000023841858,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.3795993328094482,
+    "min_val_loss_epoch": 2,
+    "max_val_acc": 0.16500000655651093,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 4.871713161468506,
+    "final_test_acc": 0.125
+  }
+]
+
+✅   m3 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 5/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m4_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_4"
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┓
+┃ Layer (type)       ┃ Output Shape ┃ Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━┩
+│ input_layer_4      │ (None, 32,   │       0 │
+│ (InputLayer)       │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ depthwise_conv2d   │ (None, 32,   │      30 │
+│ (DepthwiseConv2D)  │ 32, 3)       │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_16 (Conv2D) │ (None, 32,   │     128 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_12      │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ depthwise_conv2d_1 │ (None, 32,   │     320 │
+│ (DepthwiseConv2D)  │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_17 (Conv2D) │ (None, 32,   │   1,056 │
+│                    │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 32,   │     128 │
+│ (BatchNormalizati… │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_13      │ (None, 32,   │       0 │
+│ (Activation)       │ 32, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_8    │ (None, 16,   │       0 │
+│ (MaxPooling2D)     │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ depthwise_conv2d_2 │ (None, 16,   │     320 │
+│ (DepthwiseConv2D)  │ 16, 32)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_18 (Conv2D) │ (None, 16,   │   2,112 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_14      │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ depthwise_conv2d_3 │ (None, 16,   │     640 │
+│ (DepthwiseConv2D)  │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ conv2d_19 (Conv2D) │ (None, 16,   │   4,160 │
+│                    │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ batch_normalizati… │ (None, 16,   │     256 │
+│ (BatchNormalizati… │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ activation_15      │ (None, 16,   │       0 │
+│ (Activation)       │ 16, 64)      │         │
+├────────────────────┼──────────────┼─────────┤
+│ max_pooling2d_9    │ (None, 8, 8, │       0 │
+│ (MaxPooling2D)     │ 64)          │         │
+├────────────────────┼──────────────┼─────────┤
+│ global_average_po… │ (None, 64)   │       0 │
+│ (GlobalAveragePoo… │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dropout_4          │ (None, 64)   │       0 │
+│ (Dropout)          │              │         │
+├────────────────────┼──────────────┼─────────┤
+│ dense_6 (Dense)    │ (None, 10)   │     650 │
+└────────────────────┴──────────────┴─────────┘
+ Total params: 10,184 (39.78 KB)
+ Trainable params: 9,800 (38.28 KB)
+ Non-trainable params: 384 (1.50 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.09500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:25
+
+200/200 - 6s - 32ms/step - accuracy: 0.1375 - loss: 2.5323 - val_accuracy: 0.0950 - val_loss: 2.4759 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy improved from 0.09500 to 0.12500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/best.keras
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:25
+
+200/200 - 3s - 14ms/step - accuracy: 0.1725 - loss: 2.3294 - val_accuracy: 0.1250 - val_loss: 2.7504 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy improved from 0.12500 to 0.14500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/best.keras
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:25
+
+200/200 - 3s - 14ms/step - accuracy: 0.1637 - loss: 2.2430 - val_accuracy: 0.1450 - val_loss: 3.7018 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy improved from 0.14500 to 0.20000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/best.keras
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m4_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:25
+
+200/200 - 3s - 14ms/step - accuracy: 0.1950 - loss: 2.2226 - val_accuracy: 0.2000 - val_loss: 2.0848 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 4.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 4,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:25:59",
+    "duration": "0:00:17",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.222644090652466,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.19499999284744263,
+    "max_train_acc_epoch": 4,
+    "min_val_loss": 2.084770441055298,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.20000000298023224,
+    "max_val_acc_epoch": 4,
+    "final_test_loss": 5.725679874420166,
+    "final_test_acc": 0.12999999523162842
+  }
+]
+
+✅   m4 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 6/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m5_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_5"
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer       ┃ Output    ┃ Par… ┃ Connected  ┃
+┃ (type)      ┃ Shape     ┃    # ┃ to         ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
+│ input_laye… │ (None,    │    0 │ -          │
+│ (InputLaye… │ 32, 32,   │      │            │
+│             │ 3)        │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_21   │ (None,    │  896 │ input_lay… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_21… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_22   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_22… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_20   │ (None,    │  128 │ input_lay… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add (Add)   │ (None,    │    0 │ batch_nor… │
+│             │ 32, 32,   │      │ conv2d_20… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add[0][0]  │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ max_poolin… │ (None,    │    0 │ activatio… │
+│ (MaxPoolin… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_24   │ (None,    │ 18,… │ max_pooli… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_24… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_25   │ (None,    │ 36,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_25… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_23   │ (None,    │ 2,1… │ max_pooli… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_1 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 16, 16,   │      │ conv2d_23… │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_1[0][… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ max_poolin… │ (None, 8, │    0 │ activatio… │
+│ (MaxPoolin… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ global_ave… │ (None,    │    0 │ max_pooli… │
+│ (GlobalAve… │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dropout_5   │ (None,    │    0 │ global_av… │
+│ (Dropout)   │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dense_7     │ (None,    │  650 │ dropout_5… │
+│ (Dense)     │ 10)       │      │            │
+└─────────────┴───────────┴──────┴────────────┘
+ Total params: 69,226 (270.41 KB)
+ Trainable params: 68,842 (268.91 KB)
+ Non-trainable params: 384 (1.50 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.15500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m5_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m5_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:26
+
+200/200 - 8s - 41ms/step - accuracy: 0.1338 - loss: 2.5586 - val_accuracy: 0.1550 - val_loss: 2.4619 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy did not improve from 0.15500
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m5_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:26
+
+200/200 - 5s - 27ms/step - accuracy: 0.1475 - loss: 2.4130 - val_accuracy: 0.1150 - val_loss: 2.6104 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy did not improve from 0.15500
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m5_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:26
+
+200/200 - 4s - 22ms/step - accuracy: 0.1612 - loss: 2.3583 - val_accuracy: 0.1150 - val_loss: 2.4059 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.15500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m5_r1_default/epoch_04.keras
+
+Epoch 4: ReduceLROnPlateau reducing learning rate to 0.004999999888241291.
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:26
+
+200/200 - 5s - 23ms/step - accuracy: 0.1488 - loss: 2.3213 - val_accuracy: 0.1550 - val_loss: 2.3035 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 1.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 5,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:26:24",
+    "duration": "0:00:25",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.3213114738464355,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.16124999523162842,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.3035194873809814,
+    "min_val_loss_epoch": 4,
+    "max_val_acc": 0.1550000011920929,
+    "max_val_acc_epoch": 1,
+    "final_test_loss": 6.05612325668335,
+    "final_test_acc": 0.08500000089406967
+  }
+]
+
+✅   m5 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 7/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m6_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _standardize
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_6"
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer       ┃ Output    ┃ Par… ┃ Connected  ┃
+┃ (type)      ┃ Shape     ┃    # ┃ to         ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
+│ input_laye… │ (None,    │    0 │ -          │
+│ (InputLaye… │ 32, 32,   │      │            │
+│             │ 3)        │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_26   │ (None,    │  896 │ input_lay… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_26… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_27   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_27… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_28   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_28… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_2 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 32, 32,   │      │ activatio… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_2[0][… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_29   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_29… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_30   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_30… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_3 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 32, 32,   │      │ activatio… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_3[0][… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_32   │ (None,    │ 18,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_32… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_33   │ (None,    │ 36,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_33… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_31   │ (None,    │ 2,1… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_4 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 16, 16,   │      │ conv2d_31… │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_4[0][… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_34   │ (None,    │ 36,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_34… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_35   │ (None,    │ 36,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  256 │ conv2d_35… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_5 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 16, 16,   │      │ activatio… │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_5[0][… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_37   │ (None, 8, │ 73,… │ activatio… │
+│ (Conv2D)    │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  512 │ conv2d_37… │
+│ (BatchNorm… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_38   │ (None, 8, │ 147… │ activatio… │
+│ (Conv2D)    │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  512 │ conv2d_38… │
+│ (BatchNorm… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_36   │ (None, 8, │ 8,3… │ activatio… │
+│ (Conv2D)    │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_6 (Add) │ (None, 8, │    0 │ batch_nor… │
+│             │ 8, 128)   │      │ conv2d_36… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_6[0][… │
+│ (Activatio… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_39   │ (None, 8, │ 147… │ activatio… │
+│ (Conv2D)    │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  512 │ conv2d_39… │
+│ (BatchNorm… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_40   │ (None, 8, │ 147… │ activatio… │
+│ (Conv2D)    │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  512 │ conv2d_40… │
+│ (BatchNorm… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_7 (Add) │ (None, 8, │    0 │ batch_nor… │
+│             │ 8, 128)   │      │ activatio… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_7[0][… │
+│ (Activatio… │ 8, 128)   │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ global_ave… │ (None,    │    0 │ activatio… │
+│ (GlobalAve… │ 128)      │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dropout_6   │ (None,    │    0 │ global_av… │
+│ (Dropout)   │ 128)      │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dense_8     │ (None,    │ 1,2… │ dropout_6… │
+│ (Dense)     │ 10)       │      │            │
+└─────────────┴───────────┴──────┴────────────┘
+ Total params: 699,210 (2.67 MB)
+ Trainable params: 697,354 (2.66 MB)
+ Non-trainable params: 1,856 (7.25 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.07000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:26
+
+200/200 - 18s - 89ms/step - accuracy: 0.1100 - loss: 3.7022 - val_accuracy: 0.0700 - val_loss: 3.0639 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy improved from 0.07000 to 0.09500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/best.keras
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:26
+
+200/200 - 12s - 62ms/step - accuracy: 0.1075 - loss: 2.9805 - val_accuracy: 0.0950 - val_loss: 2.7713 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy improved from 0.09500 to 0.11500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/best.keras
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:27
+
+200/200 - 12s - 62ms/step - accuracy: 0.1150 - loss: 2.7130 - val_accuracy: 0.1150 - val_loss: 2.6197 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.11500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m6_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:27
+
+200/200 - 11s - 57ms/step - accuracy: 0.1300 - loss: 2.6535 - val_accuracy: 0.1150 - val_loss: 2.9976 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 3.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 6,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:27:23",
+    "duration": "0:00:58",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.653496503829956,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.12999999523162842,
+    "max_train_acc_epoch": 4,
+    "min_val_loss": 2.619711399078369,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.11500000208616257,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 37.214420318603516,
+    "final_test_acc": 0.10000000149011612
+  }
+]
+
+✅   m6 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 8/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m7_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  _standardize
+
+🎯  _augment_dataset
+
+🎯  build_model
+
+Model: "functional_7"
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer       ┃ Output    ┃ Par… ┃ Connected  ┃
+┃ (type)      ┃ Shape     ┃    # ┃ to         ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
+│ input_laye… │ (None,    │    0 │ -          │
+│ (InputLaye… │ 32, 32,   │      │            │
+│             │ 3)        │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_41   │ (None,    │  560 │ input_lay… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_41… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_42   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_42… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_43   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_43… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_8 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 32, 32,   │      │ activatio… │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_8[0][… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_44   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_44… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_45   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_45… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_9 (Add) │ (None,    │    0 │ batch_nor… │
+│             │ 32, 32,   │      │ activatio… │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_9[0][… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_46   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_46… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_47   │ (None,    │ 3,6… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   80 │ conv2d_47… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_10      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 32, 32,   │      │ activatio… │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_10[0]… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 20)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_48   │ (None,    │ 7,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_48… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_49   │ (None,    │ 14,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_49… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_50   │ (None,    │  840 │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_11      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ conv2d_50… │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_11[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_51   │ (None,    │ 14,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_51… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_52   │ (None,    │ 14,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_52… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_12      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ activatio… │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_12[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_53   │ (None,    │ 14,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_53… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_54   │ (None,    │ 14,… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  160 │ conv2d_54… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_13      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ activatio… │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_13[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 40)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_55   │ (None, 8, │ 28,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_55… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_56   │ (None, 8, │ 57,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_56… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_57   │ (None, 8, │ 3,2… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_14      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 80)    │      │ conv2d_57… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_14[0]… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_58   │ (None, 8, │ 57,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_58… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_59   │ (None, 8, │ 57,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_59… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_15      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 80)    │      │ activatio… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_15[0]… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_60   │ (None, 8, │ 57,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_60… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_61   │ (None, 8, │ 57,… │ activatio… │
+│ (Conv2D)    │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  320 │ conv2d_61… │
+│ (BatchNorm… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_16      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 80)    │      │ activatio… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_16[0]… │
+│ (Activatio… │ 8, 80)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ global_ave… │ (None,    │    0 │ activatio… │
+│ (GlobalAve… │ 80)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dropout_7   │ (None,    │    0 │ global_av… │
+│ (Dropout)   │ 80)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dense_9     │ (None,    │  810 │ dropout_7… │
+│ (Dense)     │ 10)       │      │            │
+└─────────────┴───────────┴──────┴────────────┘
+ Total params: 427,370 (1.63 MB)
+ Trainable params: 425,650 (1.62 MB)
+ Non-trainable params: 1,720 (6.72 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.11000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:27
+
+200/200 - 20s - 100ms/step - accuracy: 0.1037 - loss: 3.5295 - val_accuracy: 0.1100 - val_loss: 4.1563 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy did not improve from 0.11000
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:28
+
+200/200 - 9s - 46ms/step - accuracy: 0.1138 - loss: 2.8384 - val_accuracy: 0.0950 - val_loss: 2.7388 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy improved from 0.11000 to 0.11500, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/best.keras
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:28
+
+200/200 - 9s - 43ms/step - accuracy: 0.0962 - loss: 2.7163 - val_accuracy: 0.1150 - val_loss: 2.6370 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.11500
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m7_r1_default/epoch_04.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:28
+
+200/200 - 9s - 44ms/step - accuracy: 0.1013 - loss: 2.6599 - val_accuracy: 0.0700 - val_loss: 2.6751 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 3.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 7,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:28:23",
+    "duration": "0:01:00",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.6599011421203613,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.11375000327825546,
+    "max_train_acc_epoch": 2,
+    "min_val_loss": 2.637030839920044,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.11500000208616257,
+    "max_val_acc_epoch": 3,
+    "final_test_loss": 2.608859062194824,
+    "final_test_acc": 0.16500000655651093
+  }
+]
+
+✅   m7 run 1 with 'default' successfully executed
+
+⚙️   Piplining experiment 9/9
+
+🎯  _run_single_pipeline_entry
+
+🎯  load_config
+
+📂  Loading configuration file:
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/config/default.json
+
+🎯  _ensure_output_directories
+
+📂  Ensuring output directories
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/log
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/result
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/model
+/home/saeed/projects/ml/src/ml-playverse/cifar/artifact/error
+
+🚀  Launching experiment m8_r1 with 'default'
+
+🎯  load_dataset
+Files already downloaded and verified
+Files already downloaded and verified
+
+🎯  build_model
+
+Model: "functional_8"
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┓
+┃ Layer       ┃ Output    ┃ Par… ┃ Connected  ┃
+┃ (type)      ┃ Shape     ┃    # ┃ to         ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━┩
+│ input_laye… │ (None,    │    0 │ -          │
+│ (InputLaye… │ 32, 32,   │      │            │
+│             │ 3)        │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_62   │ (None,    │  448 │ input_lay… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_62… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_63   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_63… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_64   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_64… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_17      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 32, 32,   │      │ activatio… │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_17[0]… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_65   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_65… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_66   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_66… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_18      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 32, 32,   │      │ activatio… │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_18[0]… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_67   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_67… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_68   │ (None,    │ 2,3… │ activatio… │
+│ (Conv2D)    │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │   64 │ conv2d_68… │
+│ (BatchNorm… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_19      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 32, 32,   │      │ activatio… │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_19[0]… │
+│ (Activatio… │ 32, 32,   │      │            │
+│             │ 16)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_69   │ (None,    │ 4,6… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_69… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_70   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_70… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_71   │ (None,    │  544 │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_20      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ conv2d_71… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_20[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_72   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_72… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_73   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_73… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_21      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ activatio… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_21[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_74   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_74… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ batch_nor… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_75   │ (None,    │ 9,2… │ activatio… │
+│ (Conv2D)    │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None,    │  128 │ conv2d_75… │
+│ (BatchNorm… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_22      │ (None,    │    0 │ batch_nor… │
+│ (Add)       │ 16, 16,   │      │ activatio… │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None,    │    0 │ add_22[0]… │
+│ (Activatio… │ 16, 16,   │      │            │
+│             │ 32)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_76   │ (None, 8, │ 18,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_76… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_77   │ (None, 8, │ 36,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_77… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_78   │ (None, 8, │ 2,1… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_23      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 64)    │      │ conv2d_78… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_23[0]… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_79   │ (None, 8, │ 36,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_79… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_80   │ (None, 8, │ 36,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_80… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_24      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 64)    │      │ activatio… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_24[0]… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_81   │ (None, 8, │ 36,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_81… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ batch_nor… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ conv2d_82   │ (None, 8, │ 36,… │ activatio… │
+│ (Conv2D)    │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ batch_norm… │ (None, 8, │  256 │ conv2d_82… │
+│ (BatchNorm… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ add_25      │ (None, 8, │    0 │ batch_nor… │
+│ (Add)       │ 8, 64)    │      │ activatio… │
+├─────────────┼───────────┼──────┼────────────┤
+│ activation… │ (None, 8, │    0 │ add_25[0]… │
+│ (Activatio… │ 8, 64)    │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ global_ave… │ (None,    │    0 │ activatio… │
+│ (GlobalAve… │ 64)       │      │            │
+├─────────────┼───────────┼──────┼────────────┤
+│ dense_10    │ (None,    │  650 │ global_av… │
+│ (Dense)     │ 10)       │      │            │
+└─────────────┴───────────┴──────┴────────────┘
+ Total params: 274,442 (1.05 MB)
+ Trainable params: 273,066 (1.04 MB)
+ Non-trainable params: 1,376 (5.38 KB)
+
+🎯  train_model
+
+🎯  _resume_from_checkpoint
+
+🎯  _load_from_checkpoint
+
+🎯  _split_dataset
+
+🎯  _prepare_checkpoint_callback
+
+🎯  __init__ (RecoveryCheckpoint)
+
+🧠  Printing training configuration:
+Light Mode:       ON
+Augmentation:     ON
+L2 Regularization: ON (λ=0.0005)
+Dropout:           ON (rate=0.5)
+Optimizer:         adam (lr=0.01)
+Momentum:          0.9
+LR Scheduler:      ON
+Early Stopping:    ON
+Epochs:            4
+Batch Size:        4
+
+Epoch 1/4
+
+Epoch 1: val_accuracy improved from -inf to 0.08000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/best.keras
+
+Epoch 1: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/epoch_01.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_1
+
+🕒  Recording time at 15:28
+
+200/200 - 19s - 93ms/step - accuracy: 0.1100 - loss: 3.0258 - val_accuracy: 0.0800 - val_loss: 65.1387 - learning_rate: 0.0100
+Epoch 2/4
+
+Epoch 2: val_accuracy improved from 0.08000 to 0.16000, saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/best.keras
+
+Epoch 2: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/epoch_02.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_2
+
+🕒  Recording time at 15:28
+
+200/200 - 7s - 35ms/step - accuracy: 0.1475 - loss: 2.6561 - val_accuracy: 0.1600 - val_loss: 2.8471 - learning_rate: 0.0100
+Epoch 3/4
+
+Epoch 3: val_accuracy did not improve from 0.16000
+
+Epoch 3: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/epoch_03.keras
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_3
+
+🕒  Recording time at 15:29
+
+200/200 - 7s - 33ms/step - accuracy: 0.1650 - loss: 2.4636 - val_accuracy: 0.1600 - val_loss: 2.5737 - learning_rate: 0.0100
+Epoch 4/4
+
+Epoch 4: val_accuracy did not improve from 0.16000
+
+Epoch 4: saving model to /home/saeed/projects/ml/src/ml-playverse/cifar/artifact/checkpoint/m8_r1_default/epoch_04.keras
+
+Epoch 4: ReduceLROnPlateau reducing learning rate to 0.004999999888241291.
+
+🎯  on_epoch_end
+
+💾  Checkpointing experiment at epoch_4
+
+🕒  Recording time at 15:29
+
+200/200 - 7s - 33ms/step - accuracy: 0.1575 - loss: 2.4208 - val_accuracy: 0.0700 - val_loss: 6.9690 - learning_rate: 0.0100
+Restoring model weights from the end of the best epoch: 2.
+
+🎯  _save_training_history
+
+🎯  extract_history_metrics
+
+🎯  _create_evaluation_dictionary
+
+📊  Dumping experiment results:
+[
+  {
+    "model": 8,
+    "run": 1,
+    "config": "default",
+    "date": "2025-05-24",
+    "time": "15:29:08",
+    "duration": "0:00:45",
+    "parameters": {
+      "LIGHT_MODE": true,
+      "AUGMENT_MODE": true,
+      "L2_MODE": {
+        "enabled": true,
+        "lambda": 0.0005
+      },
+      "DROPOUT_MODE": {
+        "enabled": true,
+        "rate": 0.5
+      },
+      "OPTIMIZER": {
+        "type": "adam",
+        "learning_rate": 0.01,
+        "momentum": 0.9
+      },
+      "SCHEDULE_MODE": true,
+      "EARLY_STOP_MODE": true,
+      "EPOCHS_COUNT": 4,
+      "BATCH_SIZE": 4
+    },
+    "min_train_loss": 2.4207825660705566,
+    "min_train_loss_epoch": 4,
+    "max_train_acc": 0.16500000655651093,
+    "max_train_acc_epoch": 3,
+    "min_val_loss": 2.5736632347106934,
+    "min_val_loss_epoch": 3,
+    "max_val_acc": 0.1599999964237213,
+    "max_val_acc_epoch": 2,
+    "final_test_loss": 3.08827543258667,
+    "final_test_acc": 0.20999999344348907
+  }
+]
+
+✅   m8 run 1 with 'default' successfully executed

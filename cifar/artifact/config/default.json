@@ -25,14 +25,14 @@
     "enabled": true,
     "monitor": "val_accuracy",
     "factor": 0.5,
-    "patience": 3,
+    "patience": 2,
     "min_lr": 1e-5,
     "verbose": 1
   },
   "EARLY_STOP_MODE": {
     "enabled": true,
     "monitor": "val_accuracy",
-    "patience": 5,
+    "patience": 3,
     "restore_best_weights": true,
     "verbose": 1
   },
